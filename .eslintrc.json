@@ -1,0 +1,27 @@
+{
+    "extends": [
+        "next/core-web-vitals",
+        "next/typescript",       
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended"
+    ],
+    "plugins": [
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+        "indent": ["error", 4],     // Forces 4 spaces indentation
+        "quotes": ["error", "single"], // Forces single quotes usage
+        // "semi": ["error", "always"], // Forces semicolons
+        "comma-dangle": ["error", "always-multiline"], // Requires trailing commas in multiline
+        "no-unused-vars": "off",    // Disables base rule for unused variables
+        "@typescript-eslint/no-unused-vars": "error", // Enables TS version of unused vars
+        "@typescript-eslint/no-explicit-any": "off",   // Allows 'any' usage in TypeScript
+        // Agregar reglas específicas para Next.js
+        "@next/next/no-img-element": "error",  // Forzar uso de next/image
+        "react-hooks/exhaustive-deps": "warn"   // Advertir sobre deps faltantes en hooks
+    },
+    // Asegúrate de que ESLint analice los archivos correctos
+    "ignorePatterns": ["node_modules/"]
+}
