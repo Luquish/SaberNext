@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { Providers } from './providers'
+import { Providers } from '@/providers/saber'
 import Navbar from '@/components/saber/layout/Navbar'
 import Footer from '@/components/saber/layout/Footer'
 import { inter, josefin, montserrat } from '@/config/saber/fonts'

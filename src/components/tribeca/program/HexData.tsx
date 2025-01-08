@@ -1,0 +1,70 @@
+'use client'
+
+import type { Buffer } from 'buffer'
+import type { ReactNode } from 'react'
+
+import { Copyable } from './Copyable'
+
+interface HexDataProps {
+    raw: Buffer
+}
+
+const SPAN_SIZE = 4
+const ROW_SIZE = 4 * SPAN_SIZE
+
+/**
+ * Component that displays hex data in a formatted, copyable way
+ */
+function HexData({ raw }: HexDataProps) {
+    if (!raw || raw.length === 0) {
+        return <span>No data</span>
+    }
+
+    const chunks = []
+    const hexString = raw.toString('hex')
+    for (let i = 0; i < hexString.length; i += 2) {
+        chunks.push(hexString.slice(i, i + 2))
+    }
+
+    const divs: ReactNode[] = []
+    let spans: ReactNode[] = []
+    
+    for (let i = 0; i < chunks.length; i += SPAN_SIZE) {
+        const color = i % (2 * SPAN_SIZE) === 0 ? 'text-white' : 'text-gray-500'
+        spans.push(
+            <span key={i} className={color}>
+                {chunks.slice(i, i + SPAN_SIZE).join(' ')}&emsp;
+            </span>
+        )
+
+        if (
+            i % ROW_SIZE === ROW_SIZE - SPAN_SIZE ||
+            i >= chunks.length - SPAN_SIZE
+        ) {
+            divs.push(<div key={i / ROW_SIZE}>{spans}</div>)
+            spans = []
+        }
+    }
+
+    function Content() {
+        return (
+            <Copyable text={hexString}>
+                <pre className="inline-block text-start mb-0">{divs}</pre>
+            </Copyable>
+        )
+    }
+
+    return (
+        <>
+            <div className="hidden lg:flex items-center justify-end">
+                <Content />
+            </div>
+            <div className="flex lg:hidden items-center">
+                <Content />
+            </div>
+        </>
+    )
+}
+
+export type { HexDataProps }
+export { HexData }
