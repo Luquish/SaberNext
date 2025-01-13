@@ -145,7 +145,7 @@ const getWithdrawIxs = async (
         const allSigners: Signer[] = [];
         allInstructions.push(
             swap.withdraw({
-                userAuthority: wallet.adapter.publicKey!,
+                userAuthority: wallet.adapter.publicKey,
                 userAccountA,
                 userAccountB,
                 sourceAccount: userAta,

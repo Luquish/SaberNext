@@ -165,7 +165,7 @@ const FarmCounter = (props: { pool: PoolData }) => {
                             <div className="flex justify-end">
                                 <TokenLogo
                                     className='w-5 h-5'
-                                    mint={props.pool.replicaQuarryData?.[i].info.rewardsToken.mint ?? props.pool.replicaQuarryData![i].info.rewardsToken.mint}
+                                    mint={props.pool.replicaQuarryData?.[i].info.rewardsToken.mint}
                                     img={props.pool.replicaQuarryData?.[i].info.redeemer?.tokenInfo.logoURI}
                                 />
                             </div>
@@ -620,7 +620,7 @@ export default function PoolPage({ params }: { params: { id: string } }) {
                                                 apy > 0 ? <div key={i} className="flex items-center gap-1">
                                                     + <TokenLogo
                                                         className="w-4 h-4"
-                                                        mint={pool.replicaQuarryData?.[i].info.redeemer?.tokenInfo.address ?? pool.replicaQuarryData![i].info.rewardsToken.mint}
+                                                        mint={pool.replicaQuarryData?.[i].info.redeemer?.tokenInfo.address}
                                                         img={pool.replicaQuarryData?.[i].info.redeemer?.tokenInfo.logoURI}
                                                     />{' '}
                                                     {toAPY(apy, 4)}%

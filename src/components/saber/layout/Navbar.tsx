@@ -67,7 +67,7 @@ function WrappedSolBlock() {
 
     return (
         <Block active className="flex gap-1 items-center">
-            You have {ata!.balance.asNumber} wrapped SOL in your wallet.
+            You have {ata.balance.asNumber} wrapped SOL in your wallet.
             <Button 
                 size="small" 
                 disabled={isPending}
@@ -103,7 +103,7 @@ function IOUSBRBlock() {
 
     return (
         <Block active className="flex gap-1 items-center">
-            You have {iou!.balance.asNumber} IOU SBR in your wallet. You can redeem it here.
+            You have {iou.balance.asNumber} IOU SBR in your wallet. You can redeem it here.
             <Button 
                 size="small" 
                 disabled={isPending}

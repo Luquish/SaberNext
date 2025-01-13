@@ -474,7 +474,7 @@ export default function usePoolsInfo() {
                 // Also add all legacy staked balances
                 const legacyMinerBalances = data.pools.map((pool) => {
                     return getStakedBalanceAta(
-                        wallet.adapter.publicKey!,
+                        wallet.adapter.publicKey,
                         new PublicKey(pool.info.quarry),
                         new PublicKey(pool.info.lpToken.address)
                     );

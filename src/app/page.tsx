@@ -391,3 +391,10 @@ export default function IndexPage() {
         </>
     );
 }
+
+
+// 'use client'
+
+// export default function IndexPage() {
+//     return <div>Hello</div>
+// }

@@ -35,7 +35,7 @@ export const createVersionedTransaction = async (
     const CUs = Math.max(minCU, await getCUsForTx(connection, latestBlockhash, txs, payerKey));
     console.log(CUs)
 
-    const priorityFeeLS = localStorage.getItem('priorityFee') ? parseFloat(localStorage.getItem('priorityFee')!) : undefined;
+    const priorityFeeLS = localStorage.getItem('priorityFee') ? parseFloat(localStorage.getItem('priorityFee')) : undefined;
     const priorityFee = (priorityFeeLS ?? 0.0001) * LAMPORTS_PER_SOL * 1e6;
     console.log('x', priorityFee)
     txs.unshift(ComputeBudgetProgram.setComputeUnitLimit({

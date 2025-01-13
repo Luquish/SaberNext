@@ -8,7 +8,7 @@ import '@/styles/global.css'
 
 // SEO and Open Graph metadata configuration
 export const metadata: Metadata = {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://saberdao.io'),
+    metadataBase: new URL('https://saberdao.io'),
     title: {
         default: 'Saber | Solana AMM',
         template: '%s | Saber',
