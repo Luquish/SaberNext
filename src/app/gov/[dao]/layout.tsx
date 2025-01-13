@@ -6,7 +6,9 @@ import { useConditionalDarkMode } from '@/hooks/tribeca/useConditionalDarkMode'
 import { TribecaProviders } from '@/providers/tribeca'
 import { Metadata } from 'next'
 
+
 // Metadata configuration for Tribeca section
+/*
 export const metadata: Metadata = {
     metadataBase: new URL('https://tribeca.so'), // CHEQUEAR
     title: {
@@ -41,6 +43,7 @@ export const metadata: Metadata = {
     },
     themeColor: '#282A2C',
 }
+*/
 
 export default function TribecaLayout({
     children,

@@ -11,7 +11,7 @@
         "@gokiprotocol/client": "^0.11.1",
         "@headlessui/react": "^2.2.0",
         "@marinade.finance/escrow-relocker-helper": "^0.0.2",
-        "@marinade.finance/escrow-relocker-sdk": "^1.4.7",
+        "@marinade.finance/escrow-relocker-sdk": "1.4.7",
         "@notifi-network/notifi-core": "^1.1.2",
         "@notifi-network/notifi-react-hooks": "^1.1.2",
         "@octokit/plugin-rest-endpoint-methods": "^13.2.6",

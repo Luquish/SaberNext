@@ -1,6 +1,6 @@
 'use client'
 
-import SolanaIcon from '../layout/WalletLayout/SolanaIcon.svg'
+import SolanaIcon from '@/components/tribeca/layout/WalletLayout/SolanaIcon.svg'
 import { WalletButton } from '@/components/tribeca/layout/GovernorLayout/Header/WalletButton'
 
 interface Props {
