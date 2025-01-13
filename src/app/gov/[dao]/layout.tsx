@@ -4,11 +4,12 @@ import { Toaster, resolveValue, toast } from 'react-hot-toast'
 import { VscClose } from 'react-icons/vsc'
 import { useConditionalDarkMode } from '@/hooks/tribeca/useConditionalDarkMode'
 import { TribecaProviders } from '@/providers/tribeca'
-import { Metadata } from 'next'
+
 
 
 // Metadata configuration for Tribeca section
 /*
+import { Metadata } from 'next'
 export const metadata: Metadata = {
     metadataBase: new URL('https://tribeca.so'), // CHEQUEAR
     title: {

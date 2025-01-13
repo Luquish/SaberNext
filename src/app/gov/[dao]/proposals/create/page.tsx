@@ -8,7 +8,7 @@ import { ProposalCreateView as NftVoter } from '@/components/tribeca/proposals/P
  * View component that renders either NFT or Locked voter proposal creation form
  * based on the governor manifest configuration
  */
-function ProposalCreateView() {
+export default function ProposalCreateView() {
     const { manifest } = useGovernor()
 
     // The NftVoter is developed and currently only used by Marinade
@@ -18,6 +18,3 @@ function ProposalCreateView() {
 
     return <LockedVoter />
 }
-
-export { ProposalCreateView }
-export default ProposalCreateView

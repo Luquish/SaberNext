@@ -4,7 +4,7 @@ import { Card } from '@/components/tribeca/Card'
 import { GovernancePage } from '@/components/tribeca/GovernancePage'
 import { ProgramsList } from '@/components/tribeca/programs/ProgramsList'
 
-export function ProgramsView() {
+export default function ProgramsView() {
     return (
         <GovernancePage title="Programs">
             <Card

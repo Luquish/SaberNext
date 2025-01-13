@@ -9,7 +9,7 @@ import { OnboardingChecklist } from '@/components/tribeca/setup/OnboardingCheckl
 /**
  * View component for governance setup and initialization
  */
-function GovernanceSetupView() {
+export default function GovernanceSetupView() {
     const info = useGovernorInfo()
     useGovWindowTitle('Setup')
 
@@ -22,5 +22,3 @@ function GovernanceSetupView() {
         </GovernancePage>
     )
 }
-
-export { GovernanceSetupView }
