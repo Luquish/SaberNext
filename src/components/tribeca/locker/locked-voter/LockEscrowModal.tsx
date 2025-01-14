@@ -1,7 +1,6 @@
 'use client'
 
 import { ZERO } from '@quarryprotocol/quarry-sdk'
-import { SliderHandle, SliderRange, SliderTrack } from '@reach/slider'
 import { useSail, useUserATAs } from '@rockooor/sail'
 import { Fraction, sleep, TokenAmount } from '@saberhq/token-utils'
 import type { VoteEscrow } from '@tribecahq/tribeca-sdk'
@@ -205,17 +204,12 @@ function LockEscrowModal({ variant, ...modalProps }: LockEscrowModalProps) {
                                 </div>
                                 <div className="w-11/12 mx-auto my-4">
                                     <InputSlider
-                                        value={parsedDurationSeconds ?? undefined}
+                                        value={parsedDurationSeconds ? [parsedDurationSeconds] : undefined}
                                         min={durations?.[0]}
                                         max={durations?.[1]}
                                         step={1}
-                                        onChange={(e) => setDurationSeconds(e.toFixed(2))}
-                                    >
-                                        <SliderTrack>
-                                            <SliderRange />
-                                            <SliderHandle />
-                                        </SliderTrack>
-                                    </InputSlider>
+                                        onValueChange={(values) => setDurationSeconds(values[0].toFixed(2))}
+                                    />
                                 </div>
                                 <div className="flex gap-4 mx-auto mt-4 flex-wrap">
                                     {durationPresets.map(({ duration, seconds }, i) => (

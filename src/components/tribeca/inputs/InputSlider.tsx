@@ -1,34 +1,23 @@
 'use client'
 
-import '@reach/slider/styles.css'
-import { SliderInput as ReachSlider } from '@reach/slider'
+import * as RadixSlider from '@radix-ui/react-slider'
 
 /**
- * Custom styled slider input component based on Reach UI Slider
+ * Custom styled slider input component based on Radix UI Slider
  */
-function InputSlider(props: React.ComponentProps<typeof ReachSlider>) {
+function InputSlider(props: RadixSlider.SliderProps) {
     return (
-        <ReachSlider
+        <RadixSlider.Root
             {...props}
-            className={`
-                bg-none
-                [&_[data-reach-slider-range]]:bg-none
-                [&_[data-reach-slider-track]]:bg-gray-800
-                [&_[data-reach-slider-track]]:rounded
-                [&_[data-reach-slider-track]]:h-1
-                [&_[data-reach-slider-track]]:bg-gradient-to-r
-                [&_[data-reach-slider-track]]:from-gray-600
-                [&_[data-reach-slider-track]]:to-gray-200
-                [&_[data-reach-slider-handle]]:bg-gray-800
-                [&_[data-reach-slider-handle]]:w-6
-                [&_[data-reach-slider-handle]]:h-6
-                [&_[data-reach-slider-handle]]:rounded-full
-                [&_[data-reach-slider-handle]]:-webkit-appearance-none
-                [&_[data-reach-slider-handle]]:appearance-none
-                [&_[data-reach-slider-handle]]:cursor-pointer
-                [&_[data-reach-slider-handle]]:shadow-[0px_6px_12px_8px_rgba(0,0,0,0.3)]
-            `}
-        />
+            className="relative flex items-center w-full h-6 select-none touch-none"
+        >
+            <RadixSlider.Track className="bg-gray-800 rounded-full flex-1 h-1">
+                <RadixSlider.Range className="bg-gradient-to-r from-gray-600 to-gray-200 rounded-full h-full" />
+            </RadixSlider.Track>
+            <RadixSlider.Thumb
+                className="w-6 h-6 bg-gray-800 rounded-full cursor-pointer shadow-[0px_6px_12px_8px_rgba(0,0,0,0.3)] focus:outline-none"
+            />
+        </RadixSlider.Root>
     )
 }
 

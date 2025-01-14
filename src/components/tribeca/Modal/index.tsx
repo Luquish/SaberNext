@@ -1,8 +1,6 @@
 'use client'
 
-import '@reach/dialog/styles.css'
-
-import { DialogContent, DialogOverlay } from '@reach/dialog'
+import * as RadixDialog from '@radix-ui/react-dialog'
 import { animated, useSpring, useTransition } from '@react-spring/web'
 import { isMobile } from 'react-device-detect'
 import { useGesture } from 'react-use-gesture'
@@ -18,8 +16,8 @@ export interface ModalProps {
     className?: string
 }
 
-const AnimatedDialogOverlay = animated(DialogOverlay)
-const AnimatedDialogContent = animated(DialogContent)
+const AnimatedOverlay = animated(RadixDialog.Overlay)
+const AnimatedContent = animated(RadixDialog.Content)
 
 export function Modal({
     className,
@@ -59,34 +57,29 @@ export function Modal({
             {fadeTransition(
                 (transition, item) =>
                     item && (
-                        <AnimatedDialogOverlay
-                            style={{
-                                ...transition,
-                                background: darkenOverlay ? 'rgba(0, 0, 0, 0.55)' : 'none',
-                                zIndex: 11,
-                            }}
-                            isOpen={isOpen || transition.opacity.get() !== 0}
-                            onDismiss={onDismiss}
-                        >
-                            <AnimatedDialogContent
+                        <RadixDialog.Root open={isOpen} onOpenChange={(open) => !open && onDismiss()}>
+                            <AnimatedOverlay
+                                style={{
+                                    ...transition,
+                                    background: darkenOverlay ? 'rgba(0, 0, 0, 0.55)' : 'none',
+                                    zIndex: 11,
+                                }}
+                                className="fixed inset-0"
+                            />
+                            <AnimatedContent
                                 className={`shadow-2xl w-full max-w-lg p-6 rounded-lg relative dark:bg-warmGray-850 ${className || ''}`}
-                                aria-label='dialog content'
-                                {...(isMobile
-                                    ? {
-                                        ...bind(),
-                                        style: {
-                                            transform: y.to(
-                                                (n) => `translateY(${n > 0 ? n : 0}px)`
-                                            ),
-                                        },
-                                    }
-                                    : {})}
+                                style={{
+                                    transform: y.to(
+                                        (n) => `translateY(${n > 0 ? n : 0}px)`
+                                    ),
+                                }}
+                                {...(isMobile ? bind() : {})}
                             >
                                 <ModalProvider initialState={onDismiss}>
                                     {children}
                                 </ModalProvider>
-                            </AnimatedDialogContent>
-                        </AnimatedDialogOverlay>
+                            </AnimatedContent>
+                        </RadixDialog.Root>
                     )
             )}
         </>
