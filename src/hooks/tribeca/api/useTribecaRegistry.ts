@@ -16,33 +16,53 @@ const CDN_REGISTRY_URL =
 
 /**
  * Performs a GET request with a cache, returning `null` if 404.
+ *
  * The cache expires on browser reload.
+ *
+ * @param url
+ * @param signal
+ * @returns
  */
 async function fetchNullableWithFallbacks<T>(
     url: string,
     fallbacks: readonly string[],
     signal?: AbortSignal
 ): Promise<T | null> {
+    console.log('Attempting to fetch from primary URL:', url);
     try {
-        return await fetchNullableWithSessionCache<T>(url, signal)
+        const result = await fetchNullableWithSessionCache<T>(url, signal);
+        console.log('Primary URL fetch result:', !!result);
+        return result;
     } catch (e) {
+        console.error('Primary URL fetch failed:', e);
+        
         for (const fallback of fallbacks) {
+            console.log('Attempting fallback URL:', fallback);
             try {
-                return await fetchNullableWithSessionCache<T>(fallback, signal)
+                const result = await fetchNullableWithSessionCache<T>(fallback, signal);
+                console.log('Fallback URL fetch result:', !!result);
+                return result;
             } catch (e) {
-                continue
+                console.error('Fallback fetch failed:', e);
+                continue;
             }
         }
+        
+        console.error('All URLs failed');
+        // En lugar de lanzar un error, retornamos null
+        return null;
     }
-    throw new Error('could not fetch any URLs')
 }
 
 export function useTribecaRegistry() {
     const { network } = useEnvironment()
+    console.log('1. useEnvironment network:', network);
     
-    return useQuery<GovernorConfig[] | null>({
+    console.log('2. Antes de useQuery');
+    const result = useQuery<GovernorConfig[], Error>({
         queryKey: ['tribecaRegistry', network],
         queryFn: async ({ signal }) => {
+            console.log('3. Dentro de queryFn');
             const data = await fetchNullableWithFallbacks<readonly GovernorConfigJSON[]>(
                 `${REGISTRY_URL}.${formatNetwork(network)}.json`,
                 [`${CDN_REGISTRY_URL}.${formatNetwork(network)}.json`],
@@ -50,10 +70,15 @@ export function useTribecaRegistry() {
             )
             
             if (!data) {
-                return null
+                throw new Error('No data available');
             }
             
             return data.map(loadGovernorConfig)
         },
+        enabled: !!network,
+        staleTime: 1000 * 60 * 5,
+        retry: 1,
     })
+    console.log('7. Después de useQuery, result:', result);
+    return result;
 }

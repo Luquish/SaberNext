@@ -1,8 +1,8 @@
 'use client'
 
 import { useGovernor } from '@/hooks/tribeca/useGovernor'
-import { GovernanceDetailsView as LockedVoter } from './locked-voter'
-import { GovernanceDetailsView as NftVoter } from './nft-voter'
+import { GovernanceDetailsView as LockedVoter } from '@/components/tribeca/details/locked-voter'
+import { GovernanceDetailsView as NftVoter } from '@/components/tribeca/details/nft-voter'
 
 /**
  * Page component that renders either NFT or Locked voter governance details

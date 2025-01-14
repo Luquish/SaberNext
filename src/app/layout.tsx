@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { Providers } from '@/providers/saber'
+import { SaberProviders } from '../providers/saber'
 import Navbar from '@/components/saber/layout/Navbar'
 import Footer from '@/components/saber/layout/Footer'
 import { inter, josefin, montserrat } from '@/config/saber/fonts'
@@ -52,7 +52,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             className={`${inter.className} ${josefin.className} ${montserrat.className}`}
         >
             <body className="bg-black">
-                <Providers>
+                <SaberProviders>
                     <div className="text-white min-h-screen w-full flex justify-center p-5">
                         <div className="max-w-7xl flex flex-col w-full gap-5">
                             <header>
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                             </footer>
                         </div>
                     </div>
-                </Providers>
+                </SaberProviders>
             </body>
         </html>
     )

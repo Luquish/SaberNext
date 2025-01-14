@@ -26,6 +26,7 @@ import { theme } from '@/theme/tribeca';
 import { describeRPCError, handleException } from '@/utils/tribeca/error';
 import { notify } from '@/utils/tribeca/notifications';
 import { parseIdlErrors, ProgramError } from '@/utils/tribeca/programError';
+import { GovernorProvider } from '@/hooks/tribeca/useGovernor';
   
 interface TribecaDappProviderProps {
     children: React.ReactNode
@@ -249,7 +250,9 @@ export function TribecaDappProvider({ children }: TribecaDappProviderProps) {
                     >
                         <QuarryInterfaceProvider>
                             <SDKProvider>
-                                {children}
+                                <GovernorProvider>
+                                    {children}
+                                </GovernorProvider>
                             </SDKProvider>
                         </QuarryInterfaceProvider>
                     </SailProvider>

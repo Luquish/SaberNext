@@ -1,8 +1,14 @@
-import { redirect } from 'next/navigation'
+'use client'
 
-export default function Page({ params }: { params }) {
-    if (!params.dao) {
+import { redirect } from 'next/navigation'
+import { useParams } from 'next/navigation'
+
+export default function Page() {
+    const params = useParams()
+    const dao = params.dao
+    console.log(dao)
+    if (!dao) {
         redirect('/gov/sbr/overview')
     }
-    redirect(`/gov/${params.dao}/overview`)
+    redirect(`/gov/${dao}/overview`)
 }

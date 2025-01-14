@@ -242,6 +242,9 @@ importers:
       react-popper:
         specifier: ^2.3.0
         version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-query@^5.51.21:
+        specifier: link:tanstack/react-query@^5.51.21
+        version: link:tanstack/react-query@^5.51.21
       react-router:
         specifier: ^7.1.1
         version: 7.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

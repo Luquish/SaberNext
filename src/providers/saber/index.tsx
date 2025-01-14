@@ -7,7 +7,7 @@ import { DappProvider } from './DappProvider'
  * Root provider component that wraps the application with all necessary providers
  * @param props.children - Child components to be wrapped
  */
-export function Providers({ children }: PropsWithChildren) {
+export function SaberProviders({ children }: PropsWithChildren) {
     return (
         <DappProvider>
             {children}
