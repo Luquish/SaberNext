@@ -19,14 +19,18 @@ import { useGovernor } from '@/hooks/tribeca/useGovernor'
  * Hook to manage Executive Council interactions
  */
 export const useExecutiveCouncil = () => {
-    const { smartWallet } = useGovernor()
-    let walletKey: PublicKey
-    if ('publicKey' in smartWallet) {
-        walletKey = smartWallet.publicKey
-    } else {
-        walletKey = smartWallet
-    }
-    const { data: smartWalletData } = useGokiSmartWalletData(walletKey)
+    const { smartWallet: rawSmartWallet } = useGovernor()
+    const smartWallet = useMemo(() => {
+        if (!rawSmartWallet) {
+            return undefined
+        }
+        if (rawSmartWallet instanceof PublicKey) {
+            return rawSmartWallet
+        }
+        return rawSmartWallet.account.smartWallet
+    }, [rawSmartWallet])
+    
+    const { data: smartWalletData } = useGokiSmartWalletData(smartWallet)
     const { sdkMut } = useSDK()
     const { signAndConfirmTX } = useTXHandlers()
     const { wrapTx } = useWrapTx()

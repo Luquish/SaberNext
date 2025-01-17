@@ -5,8 +5,7 @@ import { useAccountData } from '@rockooor/sail'
 import { u64 } from '@saberhq/token-utils'
 import type { AccountInfo } from '@solana/web3.js'
 import { PublicKey } from '@solana/web3.js'
-import { useQueries, useQuery } from '@tanstack/react-query'
-import invariant from 'tiny-invariant'
+import { useState, useEffect } from 'react'
 
 import { generateSHA256BufferHash } from '@/utils/tribeca/crypto'
 import { getGPAConnection } from '@/utils/tribeca/gpaConnection'
@@ -91,112 +90,197 @@ export const parseProgramDeployBuffer = async ({
  */
 export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
     const { network } = useEnvironment()
+    
+    const [programData, setProgramData] = useState<{
+        data: any[] | undefined
+        isLoading: boolean
+        isFetched: boolean
+        error: Error | null
+    }>({
+        data: [],
+        isLoading: true,
+        isFetched: false,
+        error: null
+    })
 
-    const programData = useQuery({
-        queryKey: ['programDataForAuthority', network, address?.toString()],
-        queryFn: async () => {
-            invariant(address, 'address')
-            const raw = await getGPAConnection({ network }).getProgramAccounts(
-                BPF_UPGRADEABLE_LOADER_ID,
-                {
-                    dataSlice: {
-                        offset: 0,
-                        length: ACCOUNT_TYPE_SIZE + SLOT_SIZE + OPTION_SIZE + PUBKEY_LEN,
-                    },
-                    filters: [
-                        {
-                            memcmp: {
-                                offset: 0,
-                                bytes: utils.bytes.bs58.encode(
-                                    Buffer.from(new Uint8Array([3, 0, 0, 0]))
-                                ),
-                            },
+    const [programs, setPrograms] = useState<Array<{
+        data: ProgramInfo | null
+        isLoading: boolean
+        error: Error | null
+    }>>([])
+
+    useEffect(() => {
+        // EXPERIMENTAL: Timer para forzar isLoading a false después de un tiempo
+        // Esto permite que el componente muestre NoPrograms si el fetch tarda demasiado
+        // Puedes ajustar el tiempo (5000ms) según necesites
+        const loadingTimer = setTimeout(() => {
+            setProgramData(prev => ({
+                ...prev,
+                isLoading: false,
+                isFetched: true
+            }))
+        }, 5000) // 5 segundos de timeout para isLoading
+
+        if (!address) {
+            clearTimeout(loadingTimer) // Limpiamos el timer si no hay address
+            setProgramData(prev => ({
+                ...prev,
+                data: [],
+                isLoading: false,
+                isFetched: true,
+                error: null
+            }))
+            setPrograms([])
+            return
+        }
+
+        const fetchProgramData = async () => {
+            try {
+                const raw = await getGPAConnection({ network }).getProgramAccounts(
+                    BPF_UPGRADEABLE_LOADER_ID,
+                    {
+                        dataSlice: {
+                            offset: 0,
+                            length: ACCOUNT_TYPE_SIZE + SLOT_SIZE + OPTION_SIZE + PUBKEY_LEN,
                         },
-                        {
-                            memcmp: {
-                                offset: ACCOUNT_TYPE_SIZE + SLOT_SIZE,
-                                bytes: utils.bytes.bs58.encode(
-                                    Buffer.from(new Uint8Array([1, ...address.toBytes()]))
-                                ),
+                        filters: [
+                            {
+                                memcmp: {
+                                    offset: 0,
+                                    bytes: utils.bytes.bs58.encode(
+                                        Buffer.from(new Uint8Array([3, 0, 0, 0]))
+                                    ),
+                                },
                             },
-                        },
-                    ],
-                }
-            )
-            return Promise.all(
-                raw.map(({ pubkey, account }) => {
-                    const slot = u64
-                        .fromBuffer(
-                            account.data.slice(
-                                ACCOUNT_TYPE_SIZE,
-                                ACCOUNT_TYPE_SIZE + SLOT_SIZE
+                            {
+                                memcmp: {
+                                    offset: ACCOUNT_TYPE_SIZE + SLOT_SIZE,
+                                    bytes: utils.bytes.bs58.encode(
+                                        Buffer.from(new Uint8Array([1, ...address.toBytes()]))
+                                    ),
+                                },
+                            },
+                        ],
+                    }
+                )
+
+                clearTimeout(loadingTimer) // Limpiamos el timer si el fetch termina antes
+                const processedData = await Promise.all(
+                    raw.map(({ pubkey, account }) => {
+                        const slot = u64
+                            .fromBuffer(
+                                account.data.slice(
+                                    ACCOUNT_TYPE_SIZE,
+                                    ACCOUNT_TYPE_SIZE + SLOT_SIZE
+                                )
                             )
+                            .toNumber()
+                        return {
+                            pubkey,
+                            lastDeploySlot: slot,
+                            lamports: account.lamports,
+                            upgradeAuthority: address,
+                        }
+                    })
+                )
+
+                setProgramData({
+                    data: processedData,
+                    isLoading: false,
+                    isFetched: true,
+                    error: null
+                })
+            } catch (error) {
+                clearTimeout(loadingTimer) // Limpiamos el timer si hay error
+                setProgramData({
+                    data: [],
+                    isLoading: false,
+                    isFetched: true,
+                    error: error as Error
+                })
+            }
+        }
+
+        fetchProgramData()
+
+        // Limpieza del timer si el componente se desmonta
+        return () => clearTimeout(loadingTimer)
+    }, [address, network])
+
+    // Efecto para programs
+    useEffect(() => {
+        if (!programData.data) {
+            setPrograms([])
+            return
+        }
+
+        const initialPrograms = programData.data.map(() => ({
+            data: null,
+            isLoading: true,
+            error: null
+        }))
+        setPrograms(initialPrograms)
+
+        const fetchPrograms = async () => {
+            const results = await Promise.all(
+                programData.data.map(async ({
+                    pubkey,
+                    lamports: programDataLamports,
+                    lastDeploySlot,
+                    upgradeAuthority,
+                }, index) => {
+                    try {
+                        const raw = await getGPAConnection({ network }).getProgramAccounts(
+                            BPF_UPGRADEABLE_LOADER_ID,
+                            {
+                                filters: [
+                                    {
+                                        memcmp: {
+                                            offset: 0,
+                                            bytes: utils.bytes.bs58.encode(
+                                                Buffer.from(
+                                                    new Uint8Array([2, 0, 0, 0, ...pubkey.toBytes()])
+                                                )
+                                            ),
+                                        },
+                                    },
+                                ],
+                            }
                         )
-                        .toNumber()
-                    return {
-                        pubkey,
-                        lastDeploySlot: slot,
-                        lamports: account.lamports,
-                        upgradeAuthority: address,
+
+                        if (raw.length > 1) {
+                            throw new Error(
+                                `Multiple program accounts found for program data account ${pubkey.toString()}`
+                            )
+                        }
+
+                        const account = raw[0]
+                        return {
+                            data: account ? {
+                                programID: account.pubkey,
+                                programData: pubkey,
+                                programDataLamports,
+                                lastDeploySlot,
+                                upgradeAuthority,
+                            } : null,
+                            isLoading: false,
+                            error: null
+                        }
+                    } catch (error) {
+                        return {
+                            data: null,
+                            isLoading: false,
+                            error: error as Error
+                        }
                     }
                 })
             )
-        },
-        enabled: !!address,
-        refetchInterval: false,
-        refetchOnWindowFocus: false,
-        refetchOnMount: false,
-        refetchOnReconnect: false,
-        refetchIntervalInBackground: false,
-    })
 
-    const programs = useQueries({
-        queries: programData.data?.map(
-            ({
-                pubkey,
-                lamports: programDataLamports,
-                lastDeploySlot,
-                upgradeAuthority,
-            }) => ({
-                queryKey: ['programForProgramData', network, pubkey.toString()],
-                queryFn: async (): Promise<ProgramInfo | null> => {
-                    const raw = await getGPAConnection({ network }).getProgramAccounts(
-                        BPF_UPGRADEABLE_LOADER_ID,
-                        {
-                            filters: [
-                                {
-                                    memcmp: {
-                                        offset: 0,
-                                        bytes: utils.bytes.bs58.encode(
-                                            Buffer.from(
-                                                new Uint8Array([2, 0, 0, 0, ...pubkey.toBytes()])
-                                            )
-                                        ),
-                                    },
-                                },
-                            ],
-                        }
-                    )
-                    if (raw.length > 1) {
-                        throw new Error(
-                            `Multiple program accounts found for program data account ${pubkey.toString()}`
-                        )
-                    }
-                    const account = raw[0]
-                    if (!account) {
-                        return null
-                    }
-                    return {
-                        programID: account.pubkey,
-                        programData: pubkey,
-                        programDataLamports,
-                        lastDeploySlot,
-                        upgradeAuthority,
-                    }
-                },
-            })
-        ) ?? [],
-    })
+            setPrograms(results)
+        }
+
+        fetchPrograms()
+    }, [programData.data, network])
 
     return {
         programs,
@@ -209,58 +293,116 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
  */
 export const useAuthorityBuffers = (address: PublicKey | null | undefined) => {
     const { network } = useEnvironment()
-
-    return useQuery({
-        queryKey: ['programBuffersForAuthority', network, address?.toString()],
-        queryFn: async () => {
-            invariant(address, 'address')
-            const raw = await getGPAConnection({ network }).getProgramAccounts(
-                BPF_UPGRADEABLE_LOADER_ID,
-                {
-                    filters: [
-                        {
-                            memcmp: {
-                                offset: 0,
-                                bytes: utils.bytes.bs58.encode(
-                                    Buffer.from(
-                                        new Uint8Array([1, 0, 0, 0, 1, ...address.toBytes()])
-                                    )
-                                ),
-                            },
-                        },
-                    ],
-                }
-            )
-            return Promise.all(
-                raw.map(async ({ pubkey, account }): Promise<ProgramDeployBuffer> => {
-                    const buffer = await parseProgramDeployBuffer({ pubkey, account })
-                    return {
-                        ...buffer,
-                        bufferAuthority: address,
-                    }
-                })
-            )
-        },
-        enabled: !!address,
-        staleTime: 60_000,
+    const [state, setState] = useState<{
+        data: ProgramDeployBuffer[] | undefined
+        isLoading: boolean
+        error: Error | null
+    }>({
+        data: undefined,
+        isLoading: true,
+        error: null
     })
+
+    useEffect(() => {
+        if (!address) {
+            setState(prev => ({ ...prev, isLoading: false }))
+            return
+        }
+
+        const fetchBuffers = async () => {
+            try {
+                const raw = await getGPAConnection({ network }).getProgramAccounts(
+                    BPF_UPGRADEABLE_LOADER_ID,
+                    {
+                        filters: [
+                            {
+                                memcmp: {
+                                    offset: 0,
+                                    bytes: utils.bytes.bs58.encode(
+                                        Buffer.from(
+                                            new Uint8Array([1, 0, 0, 0, 1, ...address.toBytes()])
+                                        )
+                                    ),
+                                },
+                            },
+                        ],
+                    }
+                )
+
+                const buffers = await Promise.all(
+                    raw.map(async ({ pubkey, account }): Promise<ProgramDeployBuffer> => {
+                        const buffer = await parseProgramDeployBuffer({ pubkey, account })
+                        return {
+                            ...buffer,
+                            bufferAuthority: address,
+                        }
+                    })
+                )
+
+                setState({
+                    data: buffers,
+                    isLoading: false,
+                    error: null
+                })
+            } catch (error) {
+                setState({
+                    data: undefined,
+                    isLoading: false,
+                    error: error as Error
+                })
+            }
+        }
+
+        fetchBuffers()
+    }, [address, network])
+
+    return state
 }
 
 /**
  * Hook to fetch and parse a program deploy buffer
  */
 export const useProgramDeployBuffer = (buffer: PublicKey) => {
-    const { data } = useAccountData(buffer)
-    return useQuery({
-        queryKey: ['programDeployBuffer', data?.accountId.toString()],
-        queryFn: async () => {
-            if (!data?.accountInfo) {
-                return null
-            }
-            return parseProgramDeployBuffer({
-                pubkey: buffer,
-                account: data.accountInfo,
-            })
-        },
+    const { data: accountData } = useAccountData(buffer)
+    const [state, setState] = useState<{
+        data: Omit<ProgramDeployBuffer, 'bufferAuthority'> | null | undefined
+        isLoading: boolean
+        error: Error | null
+    }>({
+        data: undefined,
+        isLoading: true,
+        error: null
     })
+
+    useEffect(() => {
+        if (!accountData?.accountInfo) {
+            setState(prev => ({ ...prev, isLoading: false }))
+            return
+        }
+
+        const fetchBuffer = async () => {
+            try {
+                const result = await parseProgramDeployBuffer({
+                    pubkey: buffer,
+                    account: accountData.accountInfo,
+                })
+
+                setState({
+                    data: result,
+                    isLoading: false,
+                    error: null
+                })
+            } catch (error) {
+                setState({
+                    data: null,
+                    isLoading: false,
+                    error: error as Error
+                })
+            }
+        }
+
+        fetchBuffer()
+    }, [buffer, accountData])
+
+    return state
 }

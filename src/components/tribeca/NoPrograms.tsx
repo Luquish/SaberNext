@@ -16,7 +16,7 @@ interface Props {
 function NoPrograms({ smartWallet }: Props) {
     return (
         <EmptyState
-            icon={<GiTumbleweed />}
+            icon={<GiTumbleweed size={80}/>}
             title="This DAO doesn't own any programs."
         >
             <div className="text-center">

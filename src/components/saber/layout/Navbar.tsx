@@ -189,7 +189,7 @@ function Navbar() {
                 {/* Navigation Links */}
                 <div className="flex-grow flex-wrap flex justify-center gap-3">
                     <NavLink href="/">Pools</NavLink>
-                    <NavLink href="/gov/sbr" external>
+                    <NavLink href="/gov/sbr">
                         Tribeca
                     </NavLink>
                     <NavLink href="https://vota.fi/" external>

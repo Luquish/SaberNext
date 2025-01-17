@@ -20,17 +20,18 @@ interface Props {
 
 export function ProgramsList({ maxCount = 100 }: Props) {
     const { smartWallet, path } = useGovernor()
-
-    const finalSmartWallet = smartWallet instanceof PublicKey 
+    
+    const finalSmartWallet = smartWallet && (smartWallet instanceof PublicKey 
         ? smartWallet 
-        : smartWallet.account.smartWallet
+        : smartWallet.account.smartWallet)
 
     const { programs, programData } = useAuthorityPrograms(finalSmartWallet)
+
     const programsToRender = useMemo(
         () => programs.slice(0, maxCount),
         [maxCount, programs]
     )
-
+    
     if (!smartWallet || programData.isLoading) {
         return (
             <div className='h-[251px] flex items-center justify-center'>
@@ -55,11 +56,11 @@ export function ProgramsList({ maxCount = 100 }: Props) {
             <div className='flex flex-col gap-2'>
                 {programsToRender.map((program, i) => {
                     return (
-                        <div key={(program.data as ProgramInfo)?.programID.toString() ?? `loading_${i}`}>
+                        <div key={(program.data)?.programID.toString() ?? `loading_${i}`}>
                             {program.isLoading && <ProgramPlaceholder />}
                             {program.data && (
                                 <ProgramCard
-                                    program={program.data as ProgramInfo}
+                                    program={program.data}
                                     actions={
                                         <Link href={`${path}/proposals/create`}>
                                             <Button

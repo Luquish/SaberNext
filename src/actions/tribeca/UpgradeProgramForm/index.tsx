@@ -34,7 +34,7 @@ function UpgradeProgramForm({ onSelect }: Props) {
         ? smartWallet 
         : smartWallet.account.smartWallet
     const { data: buffers } = useAuthorityBuffers(finalSmartWallet)
-    const { programs, programData } = useAuthorityPrograms(finalSmartWallet)
+    const { programData } = useAuthorityPrograms(finalSmartWallet)
     const { network } = useEnvironment()
 
     const [programID, setProgramID] = useState<string | null>(null)
@@ -61,14 +61,14 @@ function UpgradeProgramForm({ onSelect }: Props) {
                 <span className="text-sm">Program ID</span>
                 {smartWallet ? (
                     <>
-                        {programs?.length === 0 && !programData.isLoading ? (
+                        {programData.data?.length === 0 && !programData.isLoading ? (
                             <NoPrograms smartWallet={finalSmartWallet} />
                         ) : (
                             <Select
                                 onChange={(e) => setProgramID(e.target.value)}
                             >
                                 <option>Select a program ID</option>
-                                {programs?.map((program) => {
+                                {programData.data?.map((program) => {
                                     const { data } = program
                                     if (!data) return null
                                     

@@ -24,6 +24,12 @@ function GaugesIndexView() {
     const gm = useParsedGaugemeister(gaugemeister)
     
     useGovWindowTitle('Gauges')
+    console.log('gaugemeister:', gaugemeister)
+    console.log('govToken:', govToken)
+    console.log('veToken:', veToken)
+    console.log('path:', path)
+    console.log('gm:', gm)
+
     
     const rewarderKey = gm.data?.accountInfo.data.rewarder
 

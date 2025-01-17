@@ -41,11 +41,7 @@ export type GovernorInfo = (
 export function useGovernorInfo(): GovernorInfo | null {
     const params = useParams();
     const daoStr = (params?.dao as string) ?? '';
-    console.log('daoStr:', daoStr);
     const { data: governorMetas, isLoading, isFetched } = useTribecaRegistry();
-    console.log('governorMetas:', governorMetas);
-    console.log('isLoading:', isLoading);
-    console.log('isFetched:', isFetched);
     const governorMeta = useMemo(
         () =>
             governorMetas?.find(
@@ -55,7 +51,6 @@ export function useGovernorInfo(): GovernorInfo | null {
         [governorMetas, daoStr]
     );
     const slug = governorMeta?.slug ?? daoStr;
-    console.log('slug', slug);
     const {
         data: manifest,
         isLoading: mfIsLoading,
