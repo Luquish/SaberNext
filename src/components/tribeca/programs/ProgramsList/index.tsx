@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import Link from 'next/link'
 
 import { useGovernor } from '@/hooks/tribeca/useGovernor'
-import { ProgramInfo, useAuthorityPrograms } from '@/hooks/tribeca/useAuthorityPrograms'
+import { useAuthorityPrograms } from '@/hooks/tribeca/useAuthorityPrograms'
 import { Button } from '@/components/tribeca/Button'
 import { NoPrograms } from '@/components/tribeca/NoPrograms'
 import { LoadingPage } from '@/components/tribeca/LoadingPage'

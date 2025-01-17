@@ -4,10 +4,12 @@
 // import { formatNetwork } from '@saberhq/solana-contrib'
 // import { useQuery } from '@tanstack/react-query'
 // import type { GovernorConfig, GovernorConfigJSON } from '@tribecahq/registry'
-import { GovernorConfigJSON, loadGovernorConfig } from '@tribecahq/registry'
+import { GovernorConfigJSON } from '@tribecahq/registry'
 import { useMemo } from 'react'
 
 import { useEnvironment } from '@/hooks/tribeca/useEnvironment'
+import { REGISTRY_DATA } from '@/config/tribeca/RegistryData'
+import { NetworkType } from '@/config/tribeca/RegistryData'
 
 
 // const REGISTRY_URL =
@@ -86,156 +88,6 @@ import { useEnvironment } from '@/hooks/tribeca/useEnvironment'
 //     return result;
 // }
 
-// Importar los datos locales
-const REGISTRY_DATA: Record<string, GovernorConfigJSON[]> = {
-    'devnet': [
-        {
-            'address': '3mnaXERbCiKkj4XLgpv682YK3o5Cjqti1NxRyoVNLnJp',
-            'description': 'Liquidity staking to secure and decentralize Solana',
-            'govToken': {
-                'address': 'MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey',
-                'chainId': 103,
-                'decimals': 9,
-                'logoURI': 'https://raw.githubusercontent.com/marinade-finance/liquid-staking-program/main/Docs/img/MNDE.png',
-                'name': 'Marinade Protocol Token',
-                'symbol': 'MNDE',
-            },
-            'governance': {
-                'address': '3mnaXERbCiKkj4XLgpv682YK3o5Cjqti1NxRyoVNLnJp',
-                'description': 'Liquidity staking to secure and decentralize Solana',
-                'iconURL': 'https://raw.githubusercontent.com/marinade-finance/liquid-staking-program/main/Docs/img/MNDE.png',
-                'name': 'Marinade',
-                'network': 'devnet',
-                'slug': 'mnde',
-                'token': {
-                    'address': 'MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey',
-                    'chainId': 103,
-                    'decimals': 9,
-                    'logoURI': 'https://raw.githubusercontent.com/marinade-finance/liquid-staking-program/main/Docs/img/MNDE.png',
-                    'name': 'Marinade Protocol Token',
-                    'symbol': 'MNDE',
-                },
-            },
-            'iconURL': 'https://raw.githubusercontent.com/marinade-finance/liquid-staking-program/main/Docs/img/MNDE.png',
-            'links': {
-                'app': {
-                    'label': 'App',
-                    'url': 'https://marinade.finance/app/staking',
-                },
-                'discord': {
-                    'label': 'Discord',
-                    'url': 'https://discord.com/invite/6EtUf4Euu6',
-                },
-                'forum': {
-                    'label': 'Forum',
-                    'url': 'https://forum.marinade.finance',
-                },
-                'github': {
-                    'label': 'Github',
-                    'url': 'https://github.com/marinade-finance',
-                },
-                'medium': {
-                    'label': 'Medium',
-                    'url': 'https://medium.com/marinade-finance',
-                },
-                'twitter': {
-                    'label': 'Twitter',
-                    'url': 'https://twitter.com/marinadeFinance',
-                },
-                'website': {
-                    'label': 'Website',
-                    'url': 'https://marinade.finance',
-                },
-            },
-            'mndeNftLocker': {
-                'address': 'rLmyBAjCYR1MNc3KSG77y5XXT2DuMxkcxfqLYvjjJCs',
-                'app': 'https://dev.marinade.finance/app/mnde',
-                'creators': [
-                    '6jG2QcwaJPFS8Y9SzgH2kfKPj6ERhLi9RVtH8kRahj4j',
-                ],
-                'docs': 'https://docs.marinade.finance/governance',
-            },
-            'name': 'Marinade',
-            'nftLockerGauges': [
-                {
-                    'address': '7Er1bdJU1Rd5ZuXctcp8BjnZkGQGVJT6gX46pcvqhXKT',
-                    'docs': 'https://docs.marinade.finance/governance/gauges',
-                    'label': 'Liquidity',
-                },
-                {
-                    'address': 'mvgmBamY7hDWxLNGLshMoZn8nt2P8tKnKhaBeXMVajZ',
-                    'docs': 'https://docs.marinade.finance/governance/gauges',
-                    'label': 'Validator',
-                    'stateAccount': '8szGkuLTAux9XMgZ2vtY39jVSowEcpBfFfD8hXSEqdGC',
-                },
-            ],
-            'proposals': {
-                'discussion': {
-                    'link': 'https://forum.marinade.finance/',
-                    'prefix': 'https://forum.marinade.finance/t/',
-                    'required': true,
-                },
-                'notice': 'To create a proposal, first make a post on the [Marinade Governance Forum](https://forum.marinade.finance/).\n\n\nOnce you have determined that there is sufficient community support, add the link to the discussion thread and create a proposal.\n',
-            },
-            'slug': 'mnde',
-        },
-        {
-            'address': '9tnpMysuibKx6SatcH3CWR9ZsSRMBNeBf1mhfL6gAXR4',
-            'description': 'AMM for mean-reverting trading pairs on Solana',
-            'govToken': {
-                'address': 'Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1',
-                'chainId': 103,
-                'decimals': 6,
-                'extensions': {
-                    'coingeckoId': 'saber',
-                    'discord': 'https://chat.saber.so',
-                    'github': 'https://github.com/saber-hq',
-                    'medium': 'https://blog.saber.so',
-                    'twitter': 'https://twitter.com/saber_hq',
-                    'website': 'https://saber.so',
-                },
-                'logoURI': 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1/logo.svg',
-                'name': 'Saber Protocol Token',
-                'symbol': 'SBR',
-                'tags': [],
-            },
-            'governance': {
-                'address': '9tnpMysuibKx6SatcH3CWR9ZsSRMBNeBf1mhfL6gAXR4',
-                'description': 'AMM for mean-reverting trading pairs on Solana',
-                'iconURL': 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1/logo.svg',
-                'name': 'Saber',
-                'network': 'devnet',
-                'slug': 'sbr',
-                'token': {
-                    'address': 'Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1',
-                    'chainId': 103,
-                    'decimals': 6,
-                    'extensions': {
-                        'coingeckoId': 'saber',
-                        'discord': 'https://chat.saber.so',
-                        'github': 'https://github.com/saber-hq',
-                        'medium': 'https://blog.saber.so',
-                        'twitter': 'https://twitter.com/saber_hq',
-                        'website': 'https://saber.so',
-                    },
-                    'logoURI': 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1/logo.svg',
-                    'name': 'Saber Protocol Token',
-                    'symbol': 'SBR',
-                    'tags': [],
-                },
-            },
-            'iconURL': 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Saber2gLauYim4Mvftnrasomsv6NvAuncvMEZwcLpD1/logo.svg',
-            'name': 'Saber',
-            'saves': [
-                {
-                    'duration': 31536000,
-                    'mint': 'ESm4AoqMaJ8aJR6nNvd7h45hcv83VpC9G6awj8CiDUBT',
-                },
-            ],
-            'slug': 'sbr',
-        },
-    ],
-} as const;
 
 export function useTribecaRegistry() {
     const { network } = useEnvironment()
@@ -243,18 +95,18 @@ export function useTribecaRegistry() {
     return useMemo(() => {
         if (!network) {
             return {
-                data: undefined,
+                data: undefined as readonly GovernorConfigJSON[] | undefined,
                 isLoading: false,
                 isFetched: false,
                 error: new Error('Network not available'),
             }
         }
 
-        const networkData = REGISTRY_DATA[network as keyof typeof REGISTRY_DATA]
+        const networkData = REGISTRY_DATA[network as NetworkType]
         
         if (!networkData) {
             return {
-                data: undefined,
+                data: undefined as readonly GovernorConfigJSON[] | undefined,
                 isLoading: false,
                 isFetched: true,
                 error: new Error(`No data available for network: ${network}`),
@@ -262,16 +114,15 @@ export function useTribecaRegistry() {
         }
 
         try {
-            const data = networkData.map(loadGovernorConfig)
             return {
-                data,
+                data: networkData,
                 isLoading: false,
                 isFetched: true,
                 error: null,
             }
         } catch (error) {
             return {
-                data: undefined,
+                data: undefined as readonly GovernorConfigJSON[] | undefined,
                 isLoading: false,
                 isFetched: true,
                 error: error instanceof Error ? error : new Error('Failed to load governor config'),

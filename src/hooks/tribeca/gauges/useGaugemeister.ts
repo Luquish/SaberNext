@@ -7,6 +7,7 @@ import { useGaugemeisterData } from '@/utils/tribeca/parsers'
  */
 export function useGaugemeister() {
     const { gauge } = useGovernor()
+    console.log('gauge:', gauge)
     return gauge ? gauge.gaugemeister : null
 }
 

@@ -54,7 +54,7 @@ export const useExecutiveCouncil = () => {
 
     const subaccountInfoKeysArray = Array.isArray(subaccountInfoKeys) 
         ? subaccountInfoKeys 
-        : subaccountInfoKeys.account.owners
+        : []
 
     // Get subaccount infos
     const { data: subaccountInfos } = useBatchedSubaccountInfos(subaccountInfoKeysArray)

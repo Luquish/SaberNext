@@ -100,7 +100,7 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
         data: [],
         isLoading: true,
         isFetched: false,
-        error: null
+        error: null,
     })
 
     const [programs, setPrograms] = useState<Array<{
@@ -117,7 +117,7 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
             setProgramData(prev => ({
                 ...prev,
                 isLoading: false,
-                isFetched: true
+                isFetched: true,
             }))
         }, 5000) // 5 segundos de timeout para isLoading
 
@@ -128,7 +128,7 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
                 data: [],
                 isLoading: false,
                 isFetched: true,
-                error: null
+                error: null,
             }))
             setPrograms([])
             return
@@ -188,7 +188,7 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
                     data: processedData,
                     isLoading: false,
                     isFetched: true,
-                    error: null
+                    error: null,
                 })
             } catch (error) {
                 clearTimeout(loadingTimer) // Limpiamos el timer si hay error
@@ -196,7 +196,7 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
                     data: [],
                     isLoading: false,
                     isFetched: true,
-                    error: error as Error
+                    error: error as Error,
                 })
             }
         }
@@ -217,7 +217,7 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
         const initialPrograms = programData.data.map(() => ({
             data: null,
             isLoading: true,
-            error: null
+            error: null,
         }))
         setPrograms(initialPrograms)
 
@@ -228,7 +228,7 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
                     lamports: programDataLamports,
                     lastDeploySlot,
                     upgradeAuthority,
-                }, index) => {
+                }) => {
                     try {
                         const raw = await getGPAConnection({ network }).getProgramAccounts(
                             BPF_UPGRADEABLE_LOADER_ID,
@@ -264,13 +264,13 @@ export const useAuthorityPrograms = (address: PublicKey | null | undefined) => {
                                 upgradeAuthority,
                             } : null,
                             isLoading: false,
-                            error: null
+                            error: null,
                         }
                     } catch (error) {
                         return {
                             data: null,
                             isLoading: false,
-                            error: error as Error
+                            error: error as Error,
                         }
                     }
                 })
@@ -300,7 +300,7 @@ export const useAuthorityBuffers = (address: PublicKey | null | undefined) => {
     }>({
         data: undefined,
         isLoading: true,
-        error: null
+        error: null,
     })
 
     useEffect(() => {
@@ -342,13 +342,13 @@ export const useAuthorityBuffers = (address: PublicKey | null | undefined) => {
                 setState({
                     data: buffers,
                     isLoading: false,
-                    error: null
+                    error: null,
                 })
             } catch (error) {
                 setState({
                     data: undefined,
                     isLoading: false,
-                    error: error as Error
+                    error: error as Error,
                 })
             }
         }
@@ -371,7 +371,7 @@ export const useProgramDeployBuffer = (buffer: PublicKey) => {
     }>({
         data: undefined,
         isLoading: true,
-        error: null
+        error: null,
     })
 
     useEffect(() => {
@@ -390,13 +390,13 @@ export const useProgramDeployBuffer = (buffer: PublicKey) => {
                 setState({
                     data: result,
                     isLoading: false,
-                    error: null
+                    error: null,
                 })
             } catch (error) {
                 setState({
                     data: null,
                     isLoading: false,
-                    error: error as Error
+                    error: error as Error,
                 })
             }
         }

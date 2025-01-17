@@ -1,19 +1,17 @@
 'use client'
 
 import { RewarderProvider } from '@rockooor/react-quarry'
-
-import { Card } from '@/components/tribeca/Card'
+import { GMProvider, useGM } from '@/contexts/tribeca/gauges' 
 import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { Card } from '@/components/tribeca/Card'
 import { LoadingPage } from '@/components/tribeca/LoadingPage'
-import { useGM } from '@/contexts/tribeca/gauges'
-import { useGovernor, useGovWindowTitle } from '@/hooks/tribeca/useGovernor'
-import { useEnvironment } from '@/hooks/tribeca/useEnvironment'
 import { AllGaugesInner } from '@/components/tribeca/gauges/AllGaugesInner'
 
-/**
- * Page component that displays all gauges with rewarder configuration
- */
-function GaugesAllPage() {
+import { useGovernor, useGovWindowTitle } from '@/hooks/tribeca/useGovernor'
+import { useEnvironment } from '@/hooks/tribeca/useEnvironment'
+
+
+function GaugesAllInner() {
     const { path } = useGovernor()
     const { rewarderKey } = useGM()
     const { network } = useEnvironment()
@@ -43,6 +41,14 @@ function GaugesAllPage() {
                 </Card>
             )}
         </GovernancePage>
+    )
+}
+
+function GaugesAllPage() {
+    return (
+        <GMProvider>
+            <GaugesAllInner />
+        </GMProvider>
     )
 }
 

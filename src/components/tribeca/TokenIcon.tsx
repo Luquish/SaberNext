@@ -3,6 +3,7 @@
 import type { Token } from '@saberhq/token-utils'
 import { useState } from 'react'
 import Image from 'next/image'
+
 interface Props {
     token?: Token | null
     size?: number
@@ -43,6 +44,8 @@ function TokenIcon({
                     src={token.icon}
                     onError={() => setInvalid(true)}
                     alt={`Icon for token ${token.name}`}
+                    width={size}
+                    height={size}
                     className="h-full w-full"
                 />
             )}

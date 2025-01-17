@@ -55,7 +55,7 @@ export function WalletConnectorProvider({ children }: Props) {
         ],
         []
     )
-
+    
     const network = typeof window !== 'undefined' 
         ? isLocalhost(window.location.hostname)
             ? 'devnet'

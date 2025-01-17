@@ -1,6 +1,6 @@
 export type IEnvironment = Readonly<{
-  name: string;
-  endpoint: string;
+    name: string;
+    endpoint: string;
 }>;
 
 const ENDPOINTS: Record<string, string> = {
@@ -10,18 +10,20 @@ const ENDPOINTS: Record<string, string> = {
 export const environments = {
     'mainnet-beta': {
         name: 'Mainnet Beta',
-        endpoint: ENDPOINTS[window.location.hostname] ?? process.env.REACT_APP_RPC ?? '', // CHEQUEAR
+        endpoint: typeof window !== 'undefined'
+            ? ENDPOINTS[window.location.hostname] ?? process.env.NEXT_PUBLIC_RPC_URL ?? 'https://api.mainnet-beta.solana.com'
+            : process.env.NEXT_PUBLIC_RPC_URL ?? 'https://api.mainnet-beta.solana.com',
     },
     devnet: {
         name: 'Devnet',
-        endpoint: 'https://api.devnet.solana.com/',
+        endpoint: 'https://api.devnet.solana.com',
     },
     testnet: {
         name: 'Testnet',
-        endpoint: 'https://api.testnet.solana.com/',
+        endpoint: 'https://api.testnet.solana.com',
     },
     localnet: {
         name: 'Localnet',
-        endpoint: 'http://localhost:3000/',
+        endpoint: 'http://localhost:3000',
     },
 } as const;

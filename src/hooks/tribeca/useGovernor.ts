@@ -8,6 +8,7 @@ import { GovernorWrapper } from '@tribecahq/tribeca-sdk';
 import { useMemo } from 'react';
 import { useParams } from 'next/navigation';
 import { createContainer } from 'unstated-next';
+import { loadGovernorConfig } from '@tribecahq/registry';
 
 import { useSDK } from '@/contexts/tribeca/sdk';
 import { formatDurationSeconds } from '@/utils/tribeca/format';
@@ -42,23 +43,46 @@ export function useGovernorInfo(): GovernorInfo | null {
     const params = useParams();
     const daoStr = (params?.dao as string) ?? '';
     const { data: governorMetas, isLoading, isFetched } = useTribecaRegistry();
+    console.log('governorMetas:', governorMetas)
+    console.log('isLoading:', isLoading)
+    console.log('isFetched:', isFetched)
+
     const governorMeta = useMemo(
-        () =>
-            governorMetas?.find(
+        () => {
+            const found = governorMetas?.find(
                 (gov) =>
                     gov.address.toString() === daoStr || gov.slug === daoStr
-            ) ?? null,
+            )
+            return found ? loadGovernorConfig(found) : null
+        },
         [governorMetas, daoStr]
     );
+    console.log('governorMeta?.slug:', governorMeta?.slug)
+    console.log('daoStr:', daoStr)
+
     const slug = governorMeta?.slug ?? daoStr;
+    
     const {
         data: manifest,
         isLoading: mfIsLoading,
         isFetched: mfIsFetched,
     } = useGovernanceManifest(slug);
 
+    console.log('manifest:', manifest)
+    console.log('mfIsLoading:', mfIsLoading)
+    console.log('mfIsFetched:', mfIsFetched)
+    
+
     const key = usePubkey(governorMeta?.address ?? daoStr);
+    
+    console.log('key:', key)
+    console.log('governorMeta:', governorMeta)
+    console.log('governorMeta?.gauge:', governorMeta?.gauge)
+    console.log('governorMeta?.gauge?.gaugemeister:', governorMeta?.gauge?.gaugemeister)
+
     const gaugemeister = usePubkey(governorMeta?.gauge?.gaugemeister);
+
+    console.log('gaugemeister:', gaugemeister)
 
     const loading = isLoading || !isFetched || mfIsLoading || !mfIsFetched;
     if (loading && !key) {
