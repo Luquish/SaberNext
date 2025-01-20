@@ -47,9 +47,6 @@ export default function useQuarryMiner(lpToken: TokenInfo, fetchData = false) {
                 }
             }
 
-            console.log('miner', minerW);
-            console.log('quarry', quarryW);
-
             const addresses = swaps?.find((swap) => swap.addresses.lpTokenMint === lpToken.address);
             const mergePoolAddress = addresses?.addresses.mergePool;
             const replicaInfo = mergePoolAddress && rewarders?.quarries?.find(rewarder => rewarder.mergePool === mergePoolAddress);

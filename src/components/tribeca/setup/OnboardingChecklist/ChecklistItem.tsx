@@ -25,13 +25,13 @@ function ChecklistItem({
     return (
         <div className="px-7 py-4">
             <div className="flex flex-row justify-between">
-                <th>
+                <div>
                     <span className="text-white font-semibold">{title}</span>
                     <span className="text-warmGray-600 font-normal text-xs">
                         {description}
                     </span>
-                </th>
-                <td>
+                </div>
+                <div>
                     {pass ? (
                         <div className="bg-primary text-white h-6 w-6 rounded-full flex items-center justify-center">
                             <FaCheck className="h-3 w-3" />
@@ -43,7 +43,7 @@ function ChecklistItem({
                             <FaTimes className="h-3 w-3" />
                         </div>
                     )}
-                </td>
+                </div>
             </div>
             {pass === false && (
                 <Alert className="mt-4 text-white">

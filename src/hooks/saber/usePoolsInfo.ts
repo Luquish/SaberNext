@@ -416,11 +416,6 @@ export default function usePoolsInfo() {
                                     replica.info.redeemer?.tokenInfo.decimals ??
                                         replica.info.rewardsToken.decimals
                                 );
-                                console.log(
-                                    replica.info.redeemer?.tokenInfo.address,
-                                    price,
-                                    getSecondaryEmissionApy(pool, replica, price)
-                                );
                                 return getSecondaryEmissionApy(pool, replica, price);
                             })
                         );

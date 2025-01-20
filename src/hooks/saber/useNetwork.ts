@@ -16,7 +16,7 @@ const formatNetwork = (network: WalletAdapterNetwork) => {
 
 export default function useNetwork() {
     const storedRpc = useReadLocalStorage('rpc') as string ?? undefined
-    const [network] = useState(WalletAdapterNetwork.Mainnet)
+    const [network] = useState(process.env.NEXT_PUBLIC_NETWORK as WalletAdapterNetwork)
 
     const [endpoint] = useState(process.env.NEXT_PUBLIC_RPC_URL)
     const [wsEndpoint] = useState(process.env.NEXT_PUBLIC_RPC_WS)

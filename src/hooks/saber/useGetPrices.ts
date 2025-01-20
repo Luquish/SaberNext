@@ -86,7 +86,6 @@ export default function useGetPrices() {
                         prices[priceRecord.id] = parseFloat(priceRecord.price);
                     });
                 });
-                console.log(prices);
 
                 return prices;
             } catch (e) {

@@ -9,7 +9,8 @@ import invariant from 'tiny-invariant'
 import { useGovernor } from './useGovernor'
 
 const TRIBECA_VOTERS_BASE_URL = 'https://raw.githubusercontent.com/TribecaHQ/vote-escrow-leaderboard/master/voters'
-
+// https://raw.githubusercontent.com/TribecaHQ/vote-escrow-leaderboard/master/voters/9tnpMysuibKx6SatcH3CWR9ZsSRMBNeBf1mhfL6gAXR4.json
+// No funciona en produccion
 export interface VotersList {
     count: number
     name: string
@@ -106,7 +107,7 @@ function useVotersList() {
         queryKey: ['votersOfDAO', governor.toString()],
         queryFn: async () => {
             invariant(veToken && govToken, 'veToken and govToken are required')
-            const data = await fetch(buildVotersURL(governor.toString()))
+            const data = await fetch(buildVotersURL(governor.toString())) 
                 .then((res) => res.json()) as VotersListRaw
 
             return {

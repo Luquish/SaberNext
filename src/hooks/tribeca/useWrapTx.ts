@@ -5,7 +5,6 @@ import { ComputeBudgetProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
 
 const getCUsForTx = async (txEnv: TransactionEnvelope) => {
     const simulation = await txEnv.simulate({ verifySigners: false });
-    console.log(simulation);
 
     // Add 25K + 10% leeway here because simulations are not 100% accurate
     const CUs = simulation.value.unitsConsumed

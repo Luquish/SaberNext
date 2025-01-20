@@ -18,25 +18,16 @@ import { UserGauges } from '@/components/tribeca/gauges/UserGauges'
  * Main view for the gauges section
  */
 function GaugesIndexView() {
-    console.log('CHECKPOINT')
     const gaugemeister = useGaugemeister()
-    console.log('gaugemeister:', gaugemeister)
-    
     const { govToken, veToken, path } = useGovernor()
-    console.log('govToken:', govToken)
-    console.log('veToken:', veToken)
-    console.log('path:', path)
-
     const { network } = useEnvironment()
 
-    const gm = useParsedGaugemeister(gaugemeister)
-    console.log('gm:', gm)
-
+    const gm = useParsedGaugemeister(gaugemeister) 
     useGovWindowTitle('Gauges')
     
     const rewarderKey = gm.data?.accountInfo.data.rewarder
     console.log('rewarderKey:', rewarderKey)
-
+    
     return (
         <GovernancePage title="Gauges">
             <div className="flex flex-col gap-4">

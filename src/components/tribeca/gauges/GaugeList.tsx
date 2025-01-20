@@ -1,7 +1,7 @@
 'use client'
 
 import { RewarderProvider } from '@rockooor/react-quarry'
-
+import { GMProvider } from '@/contexts/tribeca/gauges'
 import { LoadingPage } from '@/components/tribeca/LoadingPage'
 import { useGM } from '@/contexts/tribeca/gauges'
 import { useEnvironment } from '@/hooks/tribeca/useEnvironment'
@@ -11,10 +11,7 @@ interface GaugeListProps {
     limit?: number
 }
 
-/**
- * Container component for the gauge list that handles the rewarder provider
- */
-function GaugeList({ limit }: GaugeListProps) {
+function GaugeListContent({ limit }: GaugeListProps) {
     const { rewarderKey } = useGM()
     const { network } = useEnvironment()
 
@@ -26,6 +23,14 @@ function GaugeList({ limit }: GaugeListProps) {
         <RewarderProvider initialState={{ rewarderKey, network }}>
             <GaugeListInner limit={limit} />
         </RewarderProvider>
+    )
+}
+
+function GaugeList(props: GaugeListProps) {
+    return (
+        <GMProvider>
+            <GaugeListContent {...props} />
+        </GMProvider>
     )
 }
 

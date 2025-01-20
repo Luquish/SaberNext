@@ -92,6 +92,15 @@ const nextConfig = {
         }
         return config
     },
+
+    images: {
+        domains: [
+            'cdn.jsdelivr.net',
+            'arweave.net',
+            'ipfs.nftstorage.link',
+            'raw.githubusercontent.com',
+        ],
+    },
 }
 
 module.exports = nextConfig

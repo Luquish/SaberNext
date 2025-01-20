@@ -1,6 +1,6 @@
 'use client'
 
-import { GovernorProvider, useGovernorInfo } from '@/hooks/tribeca/useGovernor'
+import { useGovernorInfo } from '@/hooks/tribeca/useGovernor'
 import { EmptyState } from '@/components/tribeca/EmptyState'
 import { Card } from '@/components/tribeca/Card'
 import { GaugeForemanEC } from './GaugeForemanEC'
@@ -20,11 +20,9 @@ function OnboardingChecklist() {
     }
 
     return (
-        <GovernorProvider>
-            <Card title="Integration Status">
-                <GaugeForemanEC />
-            </Card>
-        </GovernorProvider>
+        <Card title="Integration Status">
+            <GaugeForemanEC />
+        </Card>
     )
 }
 

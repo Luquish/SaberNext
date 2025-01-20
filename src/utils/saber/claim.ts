@@ -109,7 +109,6 @@ export const getClaimIxs = async (
     pool: PoolData,
     wallet: Wallet,
 ) => {
-    console.log(pool)
     invariant(wallet.adapter.publicKey);
     invariant(miner?.miner);
 
@@ -229,7 +228,6 @@ export const getClaimIxs = async (
             // Do nothing
         }
     }
-    console.log('here')
 
     // Redeem tx
     const redeemer = await saber.loadRedeemer({

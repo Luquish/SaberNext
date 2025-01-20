@@ -260,7 +260,6 @@ export const useWithdraw = ({
 
         if (actions.unstake && miner?.data) {
         // Merge miner withdraw IXs
-            console.log(miner);
             if (miner.mergeMiner && miner.replicaInfo) {
                 const maxAmount = BigNumber.min(
                     new BigNumber(miner.stakedBalanceMM.toString()),

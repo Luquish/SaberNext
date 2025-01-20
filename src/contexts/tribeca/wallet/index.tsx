@@ -35,7 +35,8 @@ const SOLE_NETWORKS: Record<string, Network> = {
 export const SOLE_NETWORK: Network | null =
     typeof window !== 'undefined' 
         ? isLocalhost(window.location.hostname)
-            ? 'devnet'
+            // ? 'devnet'
+            ? 'mainnet-beta'
             : SOLE_NETWORKS[window.location.hostname] ?? null 
         : null
 
@@ -58,7 +59,8 @@ export function WalletConnectorProvider({ children }: Props) {
     
     const network = typeof window !== 'undefined' 
         ? isLocalhost(window.location.hostname)
-            ? 'devnet'
+            // ? 'devnet'
+            ? 'mainnet-beta'
             : SOLE_NETWORKS[window.location.hostname] ?? 'mainnet-beta'
         : 'mainnet-beta'
 
