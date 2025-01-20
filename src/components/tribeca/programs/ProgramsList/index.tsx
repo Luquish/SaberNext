@@ -34,7 +34,7 @@ export function ProgramsList({ maxCount = 100 }: Props) {
     
     if (!smartWallet || programData.isLoading) {
         return (
-            <div className='h-[251px] flex items-center justify-center'>
+            <div className='w-full h-[251px] flex items-center justify-center'>
                 <LoadingPage />
             </div>
         )
@@ -42,18 +42,18 @@ export function ProgramsList({ maxCount = 100 }: Props) {
 
     const isEmpty = programs.length === 0 && programData.isFetched
     if (isEmpty) {
-        return <NoPrograms smartWallet={finalSmartWallet} />
+        return <div className="w-full"><NoPrograms smartWallet={finalSmartWallet} /></div>
     }
 
     return (
-        <>
+        <div className="w-full">
             {programs.length === 0 &&
                 programData.data?.map((pdata) => (
                     <Notice key={pdata.pubkey.toString()}>
                         <LoadingSpinner />
                     </Notice>
                 ))}
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col gap-2 w-full'>
                 {programsToRender.map((program, i) => {
                     return (
                         <div key={(program.data)?.programID.toString() ?? `loading_${i}`}>
@@ -64,7 +64,7 @@ export function ProgramsList({ maxCount = 100 }: Props) {
                                     actions={
                                         <Link href={`${path}/proposals/create`}>
                                             <Button
-                                                className='py-2 px-3 hover:dark:text-primary hover:dark:border-primary'
+                                                className='py-2 px-3 hover:dark:text-saber hover:dark:border-primary'
                                                 variant='outline'
                                             >
                                                 Upgrade
@@ -77,6 +77,6 @@ export function ProgramsList({ maxCount = 100 }: Props) {
                     )
                 })}
             </div>
-        </>
+        </div>
     )
 }

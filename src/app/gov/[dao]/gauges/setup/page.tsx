@@ -1,6 +1,6 @@
 'use client'
 
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { useGovWindowTitle } from '@/hooks/tribeca/useGovernor'
 import { SetupGaugesCard } from '@/components/tribeca/gauges/SetupGaugesCard'
 

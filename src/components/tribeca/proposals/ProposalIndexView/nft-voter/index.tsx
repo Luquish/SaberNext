@@ -4,7 +4,7 @@ import { VoteSide } from '@tribecahq/tribeca-sdk'
 import { useParams } from 'next/navigation'
 
 import { ContentLoader } from '@/components/tribeca/ContentLoader'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { Profile } from '@/components/tribeca/Profile'
 import { useProposal } from '@/hooks/tribeca/useProposals'
 import { PlaceholderSubtitle } from '@/components/tribeca/overview/nft-voter/ProposalsList/PlaceholderCard'

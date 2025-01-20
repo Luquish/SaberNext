@@ -23,7 +23,7 @@ function SlotLink({
         <a
             className={`
                 ${isTribeca ? 'text-white' : 'text-gray-800'}
-                hover:text-primary
+                hover:text-saber
                 ${className || ''}
             `.trim()}
             href={`https://explorer.solana.com/block/${slot}?cluster=${

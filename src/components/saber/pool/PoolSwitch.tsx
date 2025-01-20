@@ -23,9 +23,9 @@ function ViewButton({ isActive, onClick, icon, label }: ViewButtonProps) {
             type="button"
             onClick={onClick}
             className={clsx(
-                'py-2 px-2 transition-colors',
+                'relative z-10 text-slate-200 rounded-lg py-2 px-3 transition-colors',
                 isActive 
-                    ? 'bg-gradient-to-r from-saber-dark to-saber-light' 
+                    ? 'bg-slate-800' 
                     : 'bg-slate-800 hover:bg-slate-700'
             )}
             aria-label={label}

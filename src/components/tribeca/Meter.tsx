@@ -30,7 +30,7 @@ function Meter({
                     width: `${Math.min(width, 1) * 100}%`,
                     backgroundColor: barColor,
                 }}
-                className="bg-primary h-1 rounded transition-all"
+                className="bg-saber h-1 rounded transition-all"
             />
         </div>
     )

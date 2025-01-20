@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { Button } from '@/components/tribeca/Button'
 import { Card } from '@/components/tribeca/Card'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { useGovernor, useGovWindowTitle } from '@/hooks/tribeca/useGovernor'
 import { EscrowInfo } from './EscrowInfo'
 import { LockerSnapshotsBasic } from './LockerSnapshotsBasic'

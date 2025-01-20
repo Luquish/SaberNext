@@ -3,7 +3,7 @@
 import { useSDK } from '@/contexts/tribeca/sdk'
 import { EmptyStateConnectWallet } from '@/components/tribeca/EmptyState'
 import { Card } from '@/components/tribeca/Card'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { ProposalCreateInner } from './ProposalCreateInner'
 
 /**

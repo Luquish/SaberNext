@@ -6,7 +6,7 @@ export function Prose({ className, ...props }: React.HTMLProps<HTMLDivElement>) 
             className={`
                 text-sm sm:text-base leading-relaxed
                 [&>p]:mb-4 [&>p:last-child]:mb-0
-                [&>a]:text-primary [&>a]:hover:underline
+                [&>a]:text-saber [&>a]:hover:underline
                 [&>code]:hyphens-auto
                 [&>ol]:list-decimal [&>ol]:pl-4
                 [&>ul]:list-disc [&>ul]:pl-4

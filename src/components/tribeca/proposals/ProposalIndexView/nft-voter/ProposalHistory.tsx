@@ -128,7 +128,7 @@ function ProposalHistory({ className, proposalInfo }: Props) {
                             {link && (
                                 <a
                                     href={link}
-                                    className="text-primary hover:text-white transition-colors"
+                                    className="text-saber hover:text-white transition-colors"
                                     target="_blank"
                                     rel="noreferrer"
                                 >

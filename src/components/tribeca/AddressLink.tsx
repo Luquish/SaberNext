@@ -36,7 +36,7 @@ export const AddressLink = ({
     return (
         <div className="inline-flex items-center">
             <a
-                className={`text-gray-800 dark:text-warmGray-200 hover:text-primary ${className || ''}`}
+                className={`text-gray-800 dark:text-warmGray-200 hover:text-saber ${className || ''}`}
                 href={`${urlPrefix}/address/${address.toString()}?cluster=${
                     network?.toString() ?? ''
                 }`}
@@ -52,7 +52,7 @@ export const AddressLink = ({
             </a>
             {showCopy && (
                 <FaRegCopy
-                    className="ml-1 cursor-pointer text-gray-800 dark:text-warmGray-200 hover:text-primary"
+                    className="ml-1 cursor-pointer text-gray-800 dark:text-warmGray-200 hover:text-saber"
                     onClick={(e) => {
                         e.preventDefault()
                         e.stopPropagation()

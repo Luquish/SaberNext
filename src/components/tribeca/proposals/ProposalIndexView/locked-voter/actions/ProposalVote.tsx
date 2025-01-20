@@ -83,7 +83,7 @@ function ProposalVote({ proposalInfo }: Props) {
                             >
                                 <Button
                                     variant="outline"
-                                    className="border-white hover:border-primary hover:bg-primary hover:bg-opacity-20 mt-4"
+                                    className="border-white hover:border-primary hover:bg-saber hover:bg-opacity-20 mt-4"
                                 >
                                     Lock Tokens
                                 </Button>

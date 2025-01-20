@@ -58,7 +58,7 @@ export function Table({
                     )}
                 </Block>
             ) : (
-                <div className="flex hover:bg-saber-dark/20 transition-colors py-3 items-center rounded-lg px-3">
+                <div className="flex hover:bg-saber/20 transition-colors py-3 items-center rounded-lg px-3 border border-black/20 shadow-[0_0_3px_rgba(85,153,255,0.1)]">
                     {row.data.map((item, j) => (
                         <div className="flex-1" key={`${index}-${j}`}>
                             {item}
@@ -91,7 +91,7 @@ export function Table({
             {!blockView && (
                 <div className="hidden lg:block rounded-lg overflow-hidden">
                     <div className="grid gap-3 w-full">
-                        <div className="flex bg-black py-3 px-5 rounded-lg">
+                        <div className="flex bg-saber/20 border border-black py-3 px-5 rounded-lg shadow-[0_0_5px_rgba(85,153,255,0.2)]">
                             {header.map((headerItem, i) => (
                                 <div 
                                     className="font-bold pr-5 flex-1" 
@@ -102,13 +102,15 @@ export function Table({
                             ))}
                         </div>
 
-                        {rows.map((row, i) => (
-                            <TableRow 
-                                key={`desktop-row-${i}`}
-                                row={row} 
-                                index={i} 
-                            />
-                        ))}
+                        <div className="grid gap-2">
+                            {rows.map((row, i) => (
+                                <TableRow 
+                                    key={`desktop-row-${i}`}
+                                    row={row} 
+                                    index={i} 
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             )}

@@ -57,7 +57,7 @@ function ProgramLogs({ message, logs }: Props) {
                     const badgeColorClass = programLogs
                         ? programLogs.failed
                             ? 'bg-accent-700 text-accent'
-                            : 'bg-primary-700 text-primary'
+                            : 'bg-saber-700 text-saber'
                         : 'bg-white-700 text-white'
 
                     const cpiStack: PublicKey[] = [programId]

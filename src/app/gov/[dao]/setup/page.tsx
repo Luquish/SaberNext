@@ -1,7 +1,7 @@
 'use client'
 
 import { useGovernorInfo, useGovWindowTitle } from '@/hooks/tribeca/useGovernor'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { LoadingPage } from '@/components/tribeca/LoadingPage'
 import { InitializeGovernanceCard } from '@/components/tribeca/setup/InitializeGovernanceCard'
 import { OnboardingChecklist } from '@/components/tribeca/setup/OnboardingChecklist'

@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { FaPlusCircle } from 'react-icons/fa'
 
 import { Card } from '@/components/tribeca/Card'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { useGovernor, useGovWindowTitle } from '@/hooks/tribeca/useGovernor'
 import { ProposalsList } from '@/components/tribeca/overview/locked-voter/ProposalsList'
 import { LegendsNeverDie } from './LegendsNeverDie'
@@ -48,7 +48,7 @@ function ProposalsListView() {
                             <h2>All Proposals</h2>
                             <Link
                                 href={`${path}/proposals/create`}
-                                className="pt-0.5 flex items-center text-primary hover:text-white transition-all"
+                                className="pt-0.5 flex items-center text-saber hover:text-white transition-all"
                             >
                                 <button>
                                     <FaPlusCircle />
@@ -63,7 +63,7 @@ function ProposalsListView() {
                                         onChange={setShowDrafts}
                                         className={`
                                             relative inline-flex items-center h-6 rounded-full w-11 transition-colors
-                                            ${showDrafts ? 'bg-primary' : 'bg-warmGray-600'}
+                                            ${showDrafts ? 'bg-saber' : 'bg-warmGray-600'}
                                         `}
                                     >
                                         <span

@@ -19,7 +19,7 @@ function LegendItem({ children }: LegendItemProps) {
     children === 'Active' 
         ? 'before:bg-accent' 
         : children === 'Passed'
-            ? 'before:bg-primary'
+            ? 'before:bg-saber'
             : 'before:bg-warmGray-600'
 }
     `

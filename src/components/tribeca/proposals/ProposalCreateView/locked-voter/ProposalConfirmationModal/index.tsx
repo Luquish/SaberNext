@@ -109,7 +109,7 @@ export function ProposalConfirmModal({
                     </div>
                     {network !== 'localnet' && proposal.instructions.length > 0 && (
                         <a
-                            className="text-sm text-primary hover:text-white transition-colors flex items-center gap-2"
+                            className="text-sm text-saber hover:text-white transition-colors flex items-center gap-2"
                             href={`https://${
                                 network === 'mainnet-beta' ? '' : `${network}.`
                             }anchor.so/tx/inspector?message=${encodeURIComponent(

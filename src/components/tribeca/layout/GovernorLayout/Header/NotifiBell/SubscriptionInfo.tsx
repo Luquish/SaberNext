@@ -25,7 +25,7 @@ export function SubscriptionInfo({ email, phone, edit }: Props) {
                 placeholder={'No phone number'}
             />
             <button className="flex justify-start" onClick={edit}>
-                <span className="text-sm text-primary">Edit Information</span>
+                <span className="text-sm text-saber">Edit Information</span>
             </button>
         </>
     );

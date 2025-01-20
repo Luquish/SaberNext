@@ -15,7 +15,7 @@ export function styleColor(style: InstructionLogEntry['type']): string {
     case 'system':
         return 'text-blue-400'
     case 'success':
-        return 'text-primary-500'
+        return 'text-saber-500'
     case 'programError':
     case 'runtimeError':
         return 'text-accent-500'

@@ -81,25 +81,36 @@ function GaugemeisterInfo({ className }: GaugemeisterInfoProps) {
     }
 
     return (
-        <Card title="Epoch Info" className={className}>
-            <CardItem label="Current Epoch">
+        <Card title="Epoch Info" className={`p-4 ${className || ''}`}>
+            <CardItem 
+                label={<span className="text-gray-400 text-sm">Current Epoch</span>}
+                className="mb-6 pl-4" // Agregamos padding izquierdo y margen inferior
+            >
                 <div className="flex items-center gap-2.5 h-7">
                     {gm ? (
-                        gm.accountInfo.data.currentRewardsEpoch
+                        <span className="text-lg font-medium">
+                            {gm.accountInfo.data.currentRewardsEpoch}
+                        </span>
                     ) : (
                         <div className="h-4 w-12 animate-pulse rounded bg-white bg-opacity-10" />
                     )}
                 </div>
             </CardItem>
             
-            <CardItem label="Next Epoch Start">
+            <CardItem 
+                label={<span className="text-gray-400 text-sm">Next Epoch Start</span>}
+                className="mb-6 pl-4" // Agregamos padding izquierdo y margen inferior
+            >
                 <div className="flex items-center gap-2.5 h-7">
                     {renderNextEpochStart()}
                 </div>
             </CardItem>
             
-            <CardItem label="Next Rewards Period">
-                <div className="flex items-center gap-2.5 h-14 text-sm leading-snug">
+            <CardItem 
+                label={<span className="text-gray-400 text-sm">Next Rewards Period</span>}
+                className="pl-4" // Agregamos padding izquierdo
+            >
+                <div className="flex items-center gap-2.5 h-14 text-sm leading-relaxed">
                     {renderNextRewardsPeriod()}
                 </div>
             </CardItem>

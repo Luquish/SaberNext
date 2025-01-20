@@ -4,7 +4,6 @@ import { useGovernor } from '@/hooks/tribeca/useGovernor';
 import { Card } from '@/components/tribeca/Card';
 import { ProposalsList } from './ProposalsList';
 
-
 export function RecentProposals() {
     const { path } = useGovernor();
     return (

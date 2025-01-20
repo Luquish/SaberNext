@@ -13,8 +13,8 @@ interface Props {
 export function ProgramCard({ program, actions }: Props) {
     const label = useProgramLabel(program.programID);
     return (
-        <div className="text-sm flex items-center justify-between py-5 px-6 border-l-2 border-l-transparent border-b border-b-warmGray-800">
-            <div className="flex flex-grow w-2/3">
+        <div className="w-full text-sm flex items-center justify-between py-5 px-6 border-l-2 border-l-transparent border-b border-b-warmGray-800">
+            <div className="flex flex-grow w-full">
                 <div className="flex-basis[236px] flex flex-col gap-1">
                     <span className="font-medium text-white">{label}</span>
                     <div className="text-xs flex gap-1 text-secondary">

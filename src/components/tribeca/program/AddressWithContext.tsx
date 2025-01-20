@@ -65,7 +65,7 @@ export const AddressWithContext = ({
                 />
             ) : (
                 <AddressLink
-                    className="dark:text-primary hover:text-opacity-80 font-mono"
+                    className="dark:text-saber hover:text-opacity-80 font-mono"
                     address={pubkey}
                     showCopy
                     showRaw={false}
@@ -115,7 +115,7 @@ export const AccountInfo = ({ pubkey, validator }: Props) => {
                         {startCase(Object.keys(subaccountData.subaccountType)[0])} #
                         {subaccountData.index.toString()} of Smart Wallet{' '}
                         <Link
-                            className="text-primary hover:text-white transition-colors"
+                            className="text-saber hover:text-white transition-colors"
                             href={`/address/${subaccountData.smartWallet.toString()}`}
                         >
                             {subaccountData.smartWallet.toString()}
@@ -150,7 +150,7 @@ export const AccountInfo = ({ pubkey, validator }: Props) => {
                             {accountName ? (
                                 <>
                                     <Link
-                                        className="text-primary hover:text-white transition-colors"
+                                        className="text-saber hover:text-white transition-colors"
                                         href={`/address/${info.data.accountId.toString()}`}
                                     >
                                         {accountName}

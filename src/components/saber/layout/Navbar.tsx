@@ -5,13 +5,15 @@ import { BaseWalletDisconnectButton, WalletMultiButton } from '@solana/wallet-ad
 import { useWallet } from '@solana/wallet-adapter-react'
 import Link from 'next/link'
 import { ImCross } from 'react-icons/im'
-import { SiGitbook } from 'react-icons/si'
-import { FaCog, FaDiscord, FaExternalLinkAlt } from 'react-icons/fa'
-import { FaMedium, FaXTwitter } from 'react-icons/fa6'
+// import { SiGitbook } from 'react-icons/si'
+import { FaCog, FaExternalLinkAlt } from 'react-icons/fa'
+// import { FaMedium, FaXTwitter } from 'react-icons/fa6'
+// import { FaDiscord } from 'react-icons/fa'
 import { useMutation } from '@tanstack/react-query'
 import { Token, WRAPPED_SOL } from '@saberhq/token-utils'
 import clsx from 'clsx'
 import { SABER_IOU_MINT } from '@saberhq/saber-periphery'
+import { usePathname } from 'next/navigation'
 
 import I18n from '@/i18n'
 import { Saber } from '@/components/saber/svg/saber'
@@ -32,10 +34,17 @@ interface NavLinkProps {
 }
 
 function NavLink({ href, external, children }: NavLinkProps) {
+    const pathname = usePathname()
+    const isActive = pathname === href || 
+        (href === '/' && pathname === '/pools')
+
     if (external) {
         return (
             <a href={href} target="_blank" rel="noopener noreferrer">
-                <Button type="secondary" className="flex items-center gap-2 h-10">
+                <Button 
+                    type="secondary" 
+                    className="w-32 flex items-center justify-center gap-2 h-10"
+                >
                     {children}
                 </Button>
             </a>
@@ -43,7 +52,15 @@ function NavLink({ href, external, children }: NavLinkProps) {
     }
     return (
         <Link href={href}>
-            <Button type="secondary" className="flex items-center gap-2 h-10">
+            <Button 
+                type="secondary" 
+                className={clsx(
+                    'w-32 flex items-center justify-center gap-2 h-10',
+                    isActive 
+                        ? 'bg-white text-[#33425E] border border-[#33425E] cursor-default pointer-events-none shadow-[inset_0_4px_8px_rgba(0,0,0,0.25)]' 
+                        : 'hover:bg-[#33425E]/10'
+                )}
+            >
                 {children}
             </Button>
         </Link>
@@ -152,7 +169,7 @@ function Navbar() {
             <UniversalPopover ref={settingRef} onClose={handleModelClose}>
                 <div
                     className={clsx(
-                        'bg-saber-modelBg max-w-2xl w-full m-2 sm:m-2 md:m-2',
+                        'bg-saber max-w-2xl w-full m-2 sm:m-2 md:m-2',
                         'bg-darkblue border border-gray-600 p-5 shadow-3xl rounded-xl',
                         'z-[1000] transition-opacity'
                     )}
@@ -163,9 +180,9 @@ function Navbar() {
                 </div>
             </UniversalPopover>
 
-            <nav className="w-full flex flex-col lg:flex-row gap-1">
-                {/* Logo Section */}
-                <div className="flex items-center gap-3 font-bold mb-3 lg:mb-0">
+            <nav className="w-full flex flex-col lg:flex-row gap-1 mt-5">
+                {/* Logo Section - Ancho fijo */}
+                <div className="flex items-center gap-3 font-bold mb-3 lg:mb-0 w-[200px]">
                     <Link href="/" className="flex-grow">
                         <div className="flex items-center gap-3">
                             <Saber className="text-saber-light" />
@@ -186,31 +203,17 @@ function Navbar() {
                     </div>
                 </div>
 
-                {/* Navigation Links */}
-                <div className="flex-grow flex-wrap flex justify-center gap-3">
-                    <NavLink href="/">Pools</NavLink>
-                    <NavLink href="/gov/sbr">
-                        Tribeca
-                    </NavLink>
-                    <NavLink href="https://vota.fi/" external>
-                        Bribes <FaExternalLinkAlt />
-                    </NavLink>
-                    <NavLink href="https://doc.saberdao.io/" external>
-                        <SiGitbook />
-                    </NavLink>
-                    <NavLink href="https://blog.saberdao.io/" external>
-                        <FaMedium />
-                    </NavLink>
-                    <NavLink href="https://twitter.com/thesaberdao" external>
-                        <FaXTwitter />
-                    </NavLink>
-                    <NavLink href="https://discord.com/invite/cmVUgRXS53" external>
-                        <FaDiscord />
-                    </NavLink>
+                {/* Navigation Links - Centrado absoluto */}
+                <div className="flex-1 flex justify-center gap-4">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 flex gap-4">
+                        <NavLink href="/">Pools</NavLink>
+                        <NavLink href="/gov/sbr">Governance</NavLink>
+                        <NavLink href="https://vota.fi/" external>Bribes <FaExternalLinkAlt /></NavLink>
+                    </div>
                 </div>
 
-                {/* Desktop Wallet & Settings */}
-                <div className="hidden lg:flex items-center gap-2">
+                {/* Desktop Wallet & Settings - Ancho fijo */}
+                <div className="hidden lg:flex items-center gap-2 w-[200px] justify-end">
                     {publicKey ? <DisconnectButton /> : <WalletMultiButton />}
                     <Button
                         type="secondary"

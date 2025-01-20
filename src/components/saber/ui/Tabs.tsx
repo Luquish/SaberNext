@@ -48,7 +48,7 @@ function TabButton({
                 aria-hidden="true"
                 className={clsx(
                     'absolute inset-x-0 bottom-0 h-0.5',
-                    tab.current ? 'bg-saber-light' : 'bg-gray-800'
+                    tab.current ? 'bg-saber' : 'bg-gray-800'
                 )}
             />
         </button>

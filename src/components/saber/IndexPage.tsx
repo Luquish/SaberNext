@@ -266,7 +266,10 @@ export default function IndexPage() {
                                 <>
                                     {poolsView !== PoolsView.GRID && (
                                         <div className="flex justify-end">
-                                            <Button className="hidden lg:inline-block" key="button">
+                                            <Button 
+                                                className="hidden lg:inline-block bg-white text-[#33425E] border border-[#33425E] font-normal transition-all hover:bg-[#33425E] hover:text-white hover:border-white" 
+                                                key="button"
+                                            >
                                                 View
                                             </Button>
                                         </div>
@@ -296,22 +299,24 @@ export default function IndexPage() {
     }, [pools])
 
     return (
-        <>
+        <div className="flex-1 flex flex-col">
             <div>
-                <div className="mt-3 mb-6">
-                    <H1>Saber global stats</H1>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 bg-saber-dark/20 rounded-lg p-3 gap-1">
-                        <div className="font-bold">TVL</div>
+                <div className="mt-5 mb-6">
+                    <div className="flex-1 flex justify-center gap-4 mb-5">
+                        <H1 className="font-normal text-4xl">Saber Global <span className="text-saber">Stats</span></H1>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 border-[0.5px] border-saber rounded-lg p-3 gap-1 shadow-[0_0_10px_0_rgba(74,222,128,0.2)]">
+                        <div className="font-bold text-saber">TVL</div>
                         <div>{`$${toPrecision(stats.tvl, 4)}`}</div>
-                        <div className="font-bold">24h volume</div>
+                        <div className="font-bold text-saber">24h volume</div>
                         <div>{`$${toPrecision(stats.volume, 4)}`}</div>
-                        <div className="font-bold">24h fees</div>
+                        <div className="font-bold text-saber">24h fees</div>
                         <div>{`$${toPrecision(stats.fee, 4)}`}</div>
-                        <div className="font-bold">Total SBR supply</div>
+                        <div className="font-bold text-saber">Total SBR supply</div>
                         <div>{`${toPrecision(sbrStats?.totalSupply ?? 0, 4)}`}</div>
-                        <div className="font-bold">SBR circulating</div>
+                        <div className="font-bold text-saber">SBR circulating</div>
                         <div>{`${toPrecision(sbrStats?.circulatingSupply ?? 0, 4)}`}</div>
-                        <div className="font-bold">veSBR supply</div>
+                        <div className="font-bold text-saber">veSBR supply</div>
                         <div>{`${toPrecision(sbrStats?.vesbr ?? 0, 4)}`}</div>
                     </div>
                 </div>
@@ -386,8 +391,10 @@ export default function IndexPage() {
                         </div>
                     </div>
                 </div>
-                <Table data={data} blockView={poolsView === PoolsView.GRID} />
+                <div className="flex-1">
+                    <Table data={data} blockView={poolsView === PoolsView.GRID} />
+                </div>
             </div>
-        </>
+        </div>
     );
 }

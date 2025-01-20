@@ -1,6 +1,6 @@
 'use client'
 
-import { GovernancePage } from '@/components/tribeca/GovernancePage';
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage';
 import { MarinadeMigration } from '@/components/tribeca/MarinadeMigration';
 
 function ProposalCreateView() {

@@ -20,13 +20,13 @@ export function Header() {
                         href='/'
                         className='hidden md:block h-6 w-36 hover:-rotate-3 transition-all'
                     >
-                        <TribecaLogo className='text-primary-800 hover:text-primary dark:text-primary dark:hover:text-white h-full w-full transition-colors' />
+                        <TribecaLogo className='text-saber-800 hover:text-saber dark:text-saber dark:hover:text-white h-full w-full transition-colors' />
                     </Link>
                     <Link 
                         href='/' 
                         className='md:hidden h-10 hover:-rotate-3 transition-all'
                     >
-                        <TribecaIcon className='text-primary-800 hover:text-primary dark:text-primary dark:hover:text-white h-full w-full transition-colors' />
+                        <TribecaIcon className='text-saber-800 hover:text-saber dark:text-saber dark:hover:text-white h-full w-full transition-colors' />
                     </Link>
                 </div>
             </div>

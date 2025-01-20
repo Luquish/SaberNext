@@ -18,7 +18,7 @@ function ProgramLabel({ address, ...rest }: ProgramLabelProps) {
 
     return (
         <AddressLink
-            className="dark:text-primary hover:text-opacity-80"
+            className="dark:text-saber hover:text-opacity-80"
             address={address}
             {...rest}
         >

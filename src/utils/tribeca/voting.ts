@@ -6,7 +6,7 @@ import { VoteSide } from '@tribecahq/tribeca-sdk'
 function getVoteColor(side: VoteSide): string {
     switch (side) {
     case VoteSide.For:
-        return 'bg-primary'
+        return 'bg-saber'
     case VoteSide.Against:
         return 'bg-red-500'
     case VoteSide.Abstain:

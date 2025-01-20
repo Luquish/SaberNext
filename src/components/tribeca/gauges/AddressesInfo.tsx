@@ -16,24 +16,28 @@ interface Props {
  */
 function AddressesInfo({ addresses }: Props) {
     return (
-        <Card title="Related Accounts" bodyScrollX className="col-span-full">
+        <Card title="Related Accounts" bodyScrollX className="w-full">
             <TableCardBody>
                 {Object.entries(addresses).map(([key, info]) => (
-                    <tr key={key}>
-                        <td>
+                    <tr 
+                        key={key} 
+                        className="border-b border-warmGray-800/20 last:border-b-0"
+                    >
+                        <td className="py-6 pl-7">
                             <div>
-                                <span className="text-white font-semibold">
+                                <div className="text-white font-semibold">
                                     {info.label}
-                                </span>
-                                <p className="text-gray">
+                                </div>
+                                <div className="text-gray-400">
                                     {info.description}
-                                </p>
+                                </div>
                             </div>
                         </td>
-                        <td>
+                        <td className="py-6 pr-7 text-right">
                             <AddressWithContext
                                 pubkey={new PublicKey(info.address.toString())}
                                 prefixLinkUrlWithAnchor
+                                className="text-saber"
                             />
                         </td>
                     </tr>

@@ -79,7 +79,7 @@ export function MoreInfo() {
                             key={item.slug}
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='space-x-3 text-gray-900 hover:text-primary p-2 font-medium flex items-center appearance-none dark:text-white dark:hover:text-primary'
+                            className='space-x-3 text-gray-900 hover:text-saber p-2 font-medium flex items-center appearance-none dark:text-white dark:hover:text-saber'
                         >
                             <div>{item.icon}</div>
                             <div>{item.label}</div>

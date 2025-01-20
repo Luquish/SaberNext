@@ -115,7 +115,7 @@ function TransactionPlanExecutor({ makePlan, onComplete }: TransactionPlanExecut
                                 </div>
                                 <div className="flex w-3/12 justify-center mr-4">
                                     {i < nextTX ? (
-                                        <FaCheckCircle className="text-primary" />
+                                        <FaCheckCircle className="text-saber" />
                                     ) : i === nextTX && pending ? (
                                         <LoadingSpinner />
                                     ) : (

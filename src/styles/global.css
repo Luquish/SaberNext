@@ -56,19 +56,28 @@ input[type='number'] {
 
 /* Solana wallet adapter style overrides */
 .wallet-adapter-button {
-  background-color: #3d42ce !important;
+  background-color: white !important;
+  color: #000000 !important;
   font-weight: normal !important;
   font-size: 14px !important;
   height: 32px !important;
+  border: 1px solid #000000 !important;
+  box-shadow: 0 0 5px rgba(85, 153, 255, 0.3) !important;
+  transition: all 0.2s ease !important;
 }
 
 .wallet-adapter-button-trigger {
-  background-color: #3d42ce !important;
+  background-color: white !important;
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
   font-weight: normal !important;
   font-size: 14px !important;
   height: 32px !important;
+  box-shadow: 0 0 5px rgba(85, 153, 255, 0.3) !important;
+  transition: all 0.2s ease !important;
 }
 
 .wallet-adapter-button-trigger:hover {
-  background-color: #6966fb !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 0 8px rgba(85, 153, 255, 0.5) !important;
 }

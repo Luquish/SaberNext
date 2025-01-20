@@ -15,7 +15,7 @@ export function PageNav({ currentPage, setCurrentPage, numPages }: Props) {
                 {currentPage !== 0 ? (
                     <button 
                         onClick={() => setCurrentPage(currentPage - 1)}
-                        className="flex gap-2 relative justify-center items-center hover:text-primary-300 uppercase"
+                        className="flex gap-2 relative justify-center items-center hover:text-saber-300 uppercase"
                     >
                         <FaChevronLeft />
                         Prev
@@ -31,7 +31,7 @@ export function PageNav({ currentPage, setCurrentPage, numPages }: Props) {
                         <li key={i}>
                             <button
                                 className={`transition-colors ${
-                                    currentPage === i ? 'text-primary-300' : ''
+                                    currentPage === i ? 'text-saber-300' : ''
                                 }`}
                                 onClick={() => setCurrentPage(i)}
                             >
@@ -46,7 +46,7 @@ export function PageNav({ currentPage, setCurrentPage, numPages }: Props) {
                 {currentPage !== numPages - 1 ? (
                     <button 
                         onClick={() => setCurrentPage(currentPage + 1)}
-                        className="flex gap-2 relative justify-center items-center hover:text-primary-300 uppercase"
+                        className="flex gap-2 relative justify-center items-center hover:text-saber-300 uppercase"
                     >
                         Next
                         <FaChevronRight />

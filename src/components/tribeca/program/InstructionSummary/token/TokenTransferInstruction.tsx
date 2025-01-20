@@ -37,7 +37,7 @@ function TokenTransferInstruction({ transfer }: Props) {
             )}{' '}
             to{' '}
             <AddressLink
-                className="dark:text-primary dark:hover:text-white"
+                className="dark:text-saber dark:hover:text-white"
                 address={recipientAddress}
                 showCopy
             />

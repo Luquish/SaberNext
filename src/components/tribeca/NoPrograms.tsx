@@ -26,7 +26,7 @@ function NoPrograms({ smartWallet }: Props) {
                 </p>
                 <p>
                     <a
-                        className="text-primary"
+                        className="text-saber"
                         href="https://docs.solana.com/cli/deploy-a-program#set-a-programs-upgrade-authority"
                         target="_blank"
                         rel="noreferrer"

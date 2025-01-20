@@ -59,7 +59,7 @@ export function ProposalsList({
             <div>
                 <EmptyState title="There aren't any proposals yet.">
                     <Link
-                        className="text-primary hover:text-white transition-colors"
+                        className="text-saber hover:text-white transition-colors"
                         href={`${path}/proposals/create`}
                     >
                         Create a proposal

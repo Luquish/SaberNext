@@ -73,7 +73,7 @@ function Copyable({ text, children, replaceText }: CopyableProps) {
         return (
             <span className="flex flex-col flex-nowrap">
                 <span className="text-xs">
-                    <span className="flex items-center text-primary">
+                    <span className="flex items-center text-saber">
                         <CopyIcon />
                         <span className="mx-2">{message}</span>
                     </span>

@@ -73,7 +73,7 @@ const ExternalLink = (props: { href?: string; icon: IconType }) => {
             href={props.href}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-center w-8 h-8 bg-saber-dark hover:bg-saber-light transition-colors rounded-full text-white"
+            className="flex items-center justify-center w-8 h-8 bg-saber hover:bg-saber/20 transition-colors rounded-full text-white"
         >
             <props.icon />
         </a>
@@ -556,7 +556,7 @@ export default function PoolPage({ params }: { params: { id: string } }) {
             <UniversalPopover ref={leveragedRef} onClose={handleModelClose}>
                 <div
                     className={clsx(
-                        'bg-saber-modelBg max-w-4xl w-full m-2 sm:m-2 md:m-2 bg-darkblue border  border-gray-600 shadow-3xl rounded-xl z-[1000] transition-opacity',
+                        'bg-saber max-w-4xl w-full m-2 sm:m-2 md:m-2 bg-darkblue border  border-gray-600 shadow-3xl rounded-xl z-[1000] transition-opacity',
                     )}
                     onClick={(e) => e.stopPropagation()}
                 >

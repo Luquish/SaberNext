@@ -3,7 +3,7 @@
 import { usePubkey } from '@rockooor/sail'
 import { useParams } from 'next/navigation'
 
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { useGovWindowTitle } from '@/hooks/tribeca/useGovernor'
 import { useGauge } from '@/hooks/tribeca/gauges/useGauges'
 

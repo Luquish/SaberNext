@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { SaberProviders } from '../providers/saber'
 import Navbar from '@/components/saber/layout/Navbar'
 import Footer from '@/components/saber/layout/Footer'
-import { inter, josefin, montserrat } from '@/config/saber/fonts'
+import { interDisplay } from '@/config/saber/fonts'
 import '@/styles/global.css'
 
 // SEO and Open Graph metadata configuration
@@ -49,9 +49,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html 
             lang="en" 
-            className={`${inter.className} ${josefin.className} ${montserrat.className}`}
+            className={`${interDisplay.className}`}
         >
-            <body className="bg-black">
+            <body className="bg-gradient-to-b from-[#000000] to-[#27313E]">
                 <SaberProviders>
                     <div className="text-white min-h-screen w-full flex justify-center p-5">
                         <div className="max-w-7xl flex flex-col w-full gap-5">

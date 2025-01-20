@@ -22,7 +22,7 @@ export function ProposalStateLabel({ state, executed }: Props) {
     
     const stateClasses = {
         canceled: 'border-gray-500 text-gray-500',
-        succeeded: 'border-primary text-primary',
+        succeeded: 'border-primary text-saber',
         active: 'border-accent text-accent',
     }
     

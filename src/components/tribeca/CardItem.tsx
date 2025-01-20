@@ -1,13 +1,15 @@
+
 interface Props {
-  label: string;
+  label: React.ReactNode;
   children?: React.ReactNode;
+  className?: string;
 }
 
-function CardItem({ label, children }: Props) {
+function CardItem({ label, children, className }: Props) {
     return (
-        <div tw="px-7 py-4 border-b border-warmGray-800">
-            <span tw="text-warmGray-400 text-sm">{label}</span>
-            <div tw="text-xl text-white mt-0.5">{children}</div>
+        <div className={`px-7 py-4 border-b border-warmGray-800 ${className || ''}`}>
+            <span className="text-warmGray-400 text-sm">{label}</span>
+            <div className="text-xl text-white mt-0.5">{children}</div>
         </div>
     );
 }

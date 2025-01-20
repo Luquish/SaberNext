@@ -57,7 +57,7 @@ function VotesCard({ side, proposal }: Props) {
     const getBarColor = () => {
         switch (side) {
         case VoteSide.For:
-            return 'bg-primary'
+            return 'bg-saber'
         case VoteSide.Against:
             return 'bg-red-500'
         default:

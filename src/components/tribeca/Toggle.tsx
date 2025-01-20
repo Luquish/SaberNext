@@ -42,7 +42,7 @@ function Toggle({
                     }}
                     className={`
                         relative inline-flex items-center h-6 rounded-full w-11 transition-colors
-                        ${displayChecked ? 'bg-primary' : 'bg-warmGray-600'}
+                        ${displayChecked ? 'bg-saber' : 'bg-warmGray-600'}
                         ${isLoading ? 'bg-warmGray-400' : ''}
                     `}
                 >

@@ -18,7 +18,7 @@ export function ExternalLink({
 }: Props) {
     return (
         <a
-            className='text-sm text-primary hover:text-white transition-colors'
+            className='text-sm text-saber hover:text-white transition-colors'
             target='_blank'
             rel='noreferrer'
             {...anchorProps}
@@ -37,7 +37,7 @@ export function ExternalLink({
 export function InternalLink({ className, ...props }: { className?: string } & Parameters<typeof Link>[0]) {
     return (
         <Link
-            className={`text-sm flex items-center gap-2 text-primary hover:text-white transition-colors ${className || ''}`}
+            className={`text-sm flex items-center gap-2 text-saber hover:text-white transition-colors ${className || ''}`}
             {...props}
         />
     )

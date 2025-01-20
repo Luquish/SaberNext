@@ -16,7 +16,7 @@ function HelpTooltip({ text, children }: Props) {
     return (
         <MouseoverTooltip text={text}>
             {children}
-            <MdInfoOutline className="inline w-3.5 h-3.5 ml-1.5 hover:text-primary" />
+            <MdInfoOutline className="inline w-3.5 h-3.5 ml-1.5 hover:text-saber" />
         </MouseoverTooltip>
     )
 }

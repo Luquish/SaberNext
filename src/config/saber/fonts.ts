@@ -1,5 +1,26 @@
 import { type NextFont } from 'next/dist/compiled/@next/font'
+import localFont from 'next/font/local'
 import { Inter, Josefin_Sans, Montserrat } from 'next/font/google'
+
+/**
+ * Inter Display font configuration
+ * Weights: Regular (400), Medium (500)
+ */
+export const interDisplay: NextFont = localFont({
+    src: [
+        {
+            path: '../../../public/saber/fonts/InterDisplay-Regular.woff2',
+            weight: '400',
+            style: 'regular',
+        },
+        {
+            path: '../../../public/saber/fonts/InterDisplay-Medium.woff2',
+            weight: '500',
+            style: 'medium',
+        },
+    ],
+    display: 'swap',
+})
 
 /**
  * Inter font configuration

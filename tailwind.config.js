@@ -98,21 +98,16 @@ module.exports = {
             xl: '1220px',
         },
         fontFamily: {
-            display: ['Inter', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Inter', 'sans-serif'],
+            display: ['Inter Display', 'sans-serif'],
+            body: ['Inter Display', 'sans-serif'],
+            sans: ['Inter Display', 'sans-serif'],
+            serif: ['Inter Display', 'sans-serif'],
             mono: ['monospace'],
         },
         extend: {
             colors: {
-                secondary: '#666',
-                saber: {
-                    light: '#6966FB',
-                    dark: '#3D42CE',
-                    darker: '#181a52',
-                    modelBg: '#111827',
-                },
+                secondary: '#242424',
+                saber: '#5599FF',
                 primary,
                 accent,
                 coolGray,

@@ -107,7 +107,7 @@ function Footer() {
                                     href={link.url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="hover:text-primary transition-colors"
+                                    className="hover:text-saber transition-colors"
                                 >
                                     <span className="w-4 h-4 inline-block">
                                         {icon}

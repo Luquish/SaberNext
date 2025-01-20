@@ -32,8 +32,8 @@ export function Block({
                     'relative z-10 transition-colors',
                     'bg-gray-900 border border-gray-700',
                     'rounded-lg text-gray-200',
-                    active && 'bg-saber-darker',
-                    hover && 'group-hover:bg-saber-dark/20',
+                    active && 'bg-saber',
+                    hover && 'group-hover:bg-saber/20',
                     !noPadding && 'p-5',
                     className
                 )}

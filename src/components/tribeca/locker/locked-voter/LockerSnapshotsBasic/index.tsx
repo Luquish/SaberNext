@@ -54,7 +54,7 @@ function LockerSnapshotsBasic({ owner }: LockerSnapshotsBasicProps) {
                 title="Set up Snapshots"
                 image={
                     <div className="flex items-center justify-center p-8">
-                        <TimeTravel className="w-3/4 h-3/4 text-primary" />
+                        <TimeTravel className="w-3/4 h-3/4 text-saber" />
                     </div>
                 }
             >

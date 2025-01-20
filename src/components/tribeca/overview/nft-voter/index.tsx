@@ -4,7 +4,7 @@ import {
     useGovernor,
     useGovWindowTitle,
 } from '@/hooks/tribeca/useGovernor'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { ImageWithFallback } from '@/components/tribeca/ImageWithFallback'
 import { MarinadeMigration } from '@/components/tribeca/MarinadeMigration'
 import { RecentProposals } from './RecentProposals'

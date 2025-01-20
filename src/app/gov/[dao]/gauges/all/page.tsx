@@ -2,7 +2,7 @@
 
 import { RewarderProvider } from '@rockooor/react-quarry'
 import { GMProvider, useGM } from '@/contexts/tribeca/gauges' 
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { Card } from '@/components/tribeca/Card'
 import { LoadingPage } from '@/components/tribeca/LoadingPage'
 import { AllGaugesInner } from '@/components/tribeca/gauges/AllGaugesInner'

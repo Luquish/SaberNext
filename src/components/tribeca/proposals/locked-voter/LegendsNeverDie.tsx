@@ -12,7 +12,7 @@ function LegendItem({ children }: LegendItemProps) {
         case 'Active':
             return 'bg-accent'
         case 'Passed':
-            return 'bg-primary'
+            return 'bg-saber'
         case 'Failed':
             return 'bg-warmGray-600'
         default:

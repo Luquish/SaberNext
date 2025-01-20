@@ -6,7 +6,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 import { Card } from '@/components/tribeca/Card'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { InputSearchText } from '@/components/tribeca/inputs/InputSearchText'
 import { LoadingPage } from '@/components/tribeca/LoadingPage'
 import { ExternalLink } from '@/components/tribeca/typography/ExternalLink'
@@ -52,7 +52,7 @@ function GaugeWeightsPage() {
                             You can vote for gauge weight with your {veToken?.symbol} tokens
                             (locked {govToken?.symbol} tokens in{' '}
                             <Link 
-                                className="text-primary hover:text-white" 
+                                className="text-saber hover:text-white" 
                                 href={`${path}/locker`}
                             >
                                 Locker

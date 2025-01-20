@@ -94,11 +94,79 @@ const nextConfig = {
     },
 
     images: {
-        domains: [
-            'cdn.jsdelivr.net',
-            'arweave.net',
-            'ipfs.nftstorage.link',
-            'raw.githubusercontent.com',
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'raw.githubusercontent.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'arweave.net',
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.arweave.net',
+            },
+            {
+                protocol: 'https',
+                hostname: 'shdw-drive.genesysgo.net',
+            },
+            {
+                protocol: 'https',
+                hostname: 'metadata.degods.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'img-cdn.magiceden.dev',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.jsdelivr.net',
+            },
+            {
+                protocol: 'https',
+                hostname: 'registry.saber.so',
+            },
+            {
+                protocol: 'https',
+                hostname: 'coin98.s3.ap-southeast-1.amazonaws.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'bafkreig55mf3lazzbgndiqyqvdmchdsykvvebww7cqlws6ywgog5xfdzta.ipfs.nftstorage.link',
+            },
+            {
+                protocol: 'https',
+                hostname: 'bafkreiflz2xxkfn33qjch2wj55bvbn33q3s4mmb6bye5pt3mpgy4t2wg4e.ipfs.nftstorage.link',
+            },
+            {
+                protocol: 'https',
+                hostname: 'ipfs.io',
+            },
+            {
+                protocol: 'https',
+                hostname: 'dev.euroe.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.circle.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'static.jup.ag',
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.degencdn.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cogent-cogs.s3.us-west-2.amazonaws.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'solanahub.app',
+            },
         ],
     },
 }

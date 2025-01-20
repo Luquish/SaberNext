@@ -52,7 +52,7 @@ function VotesCard({ side, proposal }: Props) {
         : proposal.forVotes.add(proposal.againstVotes)
 
     const getBarColor = () => {
-        return side === VoteSide.For ? 'bg-primary' : 'bg-red-500'
+        return side === VoteSide.For ? 'bg-saber' : 'bg-red-500'
     }
 
     return (

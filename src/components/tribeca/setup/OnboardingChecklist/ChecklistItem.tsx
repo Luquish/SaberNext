@@ -33,7 +33,7 @@ function ChecklistItem({
                 </div>
                 <div>
                     {pass ? (
-                        <div className="bg-primary text-white h-6 w-6 rounded-full flex items-center justify-center">
+                        <div className="bg-saber text-white h-6 w-6 rounded-full flex items-center justify-center">
                             <FaCheck className="h-3 w-3" />
                         </div>
                     ) : pass === undefined ? (

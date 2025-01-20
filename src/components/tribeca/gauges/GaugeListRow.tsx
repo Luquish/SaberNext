@@ -141,7 +141,7 @@ function GaugeListRow({
                                 ) : delta > 0 ? (
                                     <IoTriangle className="w-3 h-3 rotate-180 text-red-500" />
                                 ) : delta < 0 ? (
-                                    <IoTriangle className="w-3 h-3 text-primary" />
+                                    <IoTriangle className="w-3 h-3 text-saber" />
                                 ) : (
                                     <MdHorizontalRule className="w-3 h-3 text-neutral-600" />
                                 )}
@@ -180,7 +180,7 @@ function GaugeListRow({
                     )}
                     {stakedToken?.info.extensions?.website && (
                         <a
-                            className="text-primary hover:text-white transition-colors"
+                            className="text-saber hover:text-white transition-colors"
                             href={stakedToken.info.extensions.website}
                             target="_blank"
                             rel="noreferrer"

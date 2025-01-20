@@ -52,7 +52,7 @@ function getStateIcon(state: ProposalState): React.ReactNode {
             
     default:
         return (
-            <div className={`${containerBaseClasses} bg-primary`}>
+            <div className={`${containerBaseClasses} bg-saber`}>
                 <FaCheck className={iconBaseClasses} />
             </div>
         )

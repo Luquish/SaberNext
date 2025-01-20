@@ -4,7 +4,7 @@ import { Switch } from '@headlessui/react'
 import { useState } from 'react'
 
 import { Card } from '@/components/tribeca/Card'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { useGovWindowTitle } from '@/hooks/tribeca/useGovernor'
 import { ProposalsList } from '@/components/tribeca/overview/nft-voter/ProposalsList'
 import { LegendsNeverDie } from './LegendsNeverDie'
@@ -52,7 +52,7 @@ function ProposalsListView() {
                                         onChange={setShowDrafts}
                                         className={`
                                             relative inline-flex items-center h-6 rounded-full w-11 transition-colors
-                                            ${showDrafts ? 'bg-primary' : 'bg-warmGray-600'}
+                                            ${showDrafts ? 'bg-saber' : 'bg-warmGray-600'}
                                         `}
                                     >
                                         <span

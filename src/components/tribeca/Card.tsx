@@ -33,43 +33,46 @@ function Card({
     const bodyClasses = [
         padded ? 'px-7 py-4' : '',
         bodyScrollX ? 'overflow-x-auto' : '',
+        'flex-1',
     ].filter(Boolean).join(' ')
 
     const linkClasses = 'flex items-center justify-center py-5 text-xs uppercase font-bold tracking-widest border-t border-warmGray-800'
 
     return (
-        <div className={`rounded bg-warmGray-850 shadow-xl flex flex-col ${className || ''}`}>
-            {title && (
-                <div
-                    className="h-16 flex items-center px-7 w-full text-white font-bold tracking-tight border-b border-warmGray-800"
-                    style={titleStyles}
-                >
-                    {typeof title === 'string' ? <h2>{title}</h2> : title}
-                </div>
-            )}
-
-            <CardErrorBoundary>
-                <div className={bodyClasses}>
-                    {children}
-                </div>
-            </CardErrorBoundary>
-
-            {link && (
-                link.href ? (
-                    <Link 
-                        href={link.href} 
-                        className="text-white hover:text-primary"
+        <div className="w-full flex justify-center">
+            <div className={`w-full rounded bg-warmGray-850 shadow-xl flex flex-col ${className || ''}`}>
+                {title && (
+                    <div
+                        className="h-16 flex items-center px-7 w-full text-white font-bold tracking-tight border-b border-warmGray-800"
+                        style={titleStyles}
                     >
-                        <div className={linkClasses}>
+                        {typeof title === 'string' ? <h2>{title}</h2> : title}
+                    </div>
+                )}
+
+                <CardErrorBoundary>
+                    <div className={bodyClasses}>
+                        {children}
+                    </div>
+                </CardErrorBoundary>
+
+                {link && (
+                    link.href ? (
+                        <Link 
+                            href={link.href} 
+                            className="text-white hover:text-saber"
+                        >
+                            <div className={linkClasses}>
+                                {link.title}
+                            </div>
+                        </Link>
+                    ) : (
+                        <div className={`${linkClasses} text-warmGray-600 cursor-not-allowed`}>
                             {link.title}
                         </div>
-                    </Link>
-                ) : (
-                    <div className={`${linkClasses} text-warmGray-600 cursor-not-allowed`}>
-                        {link.title}
-                    </div>
-                )
-            )}
+                    )
+                )}
+            </div>
         </div>
     )
 }

@@ -55,7 +55,7 @@ function InputTokenAmount({
                                 {currentAmount.amount ? (
                                     <span 
                                         className={`
-                                            ml-2 text-primary 
+                                            ml-2 text-saber 
                                             ${currentAmount.allowSelect ? 'cursor-pointer hover:underline' : ''}
                                         `}
                                         onClick={

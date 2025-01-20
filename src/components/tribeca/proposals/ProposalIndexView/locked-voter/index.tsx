@@ -5,7 +5,7 @@ import { noop } from 'lodash-es'
 import { useParams } from 'next/navigation'
 
 import { ContentLoader } from '@/components/tribeca/ContentLoader'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { Profile } from '@/components/tribeca/Profile'
 import { PlaceholderSubtitle } from '@/components/tribeca/overview/locked-voter/ProposalsList/PlaceholderCard'
 import { ProposalSubtitle } from '@/components/tribeca/overview/locked-voter/ProposalsList/ProposalSubtitle'

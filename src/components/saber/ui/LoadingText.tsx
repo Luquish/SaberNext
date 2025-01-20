@@ -23,5 +23,4 @@ export function LoadingText({
         </div>
     )
 }
-
 export default LoadingText

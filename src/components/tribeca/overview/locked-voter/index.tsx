@@ -5,33 +5,26 @@ import {
     useGovWindowTitle,
 } from '@/hooks/tribeca/useGovernor'
 import { Card } from '@/components/tribeca/Card'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
-import { ImageWithFallback } from '@/components/tribeca/ImageWithFallback'
+// import { ImageWithFallback } from '@/components/tribeca/ImageWithFallback'
 import { ProgramsList } from '@/components/tribeca/programs/ProgramsList'
 import { OverviewHeader } from './OverviewHeader'
 import { RecentProposals } from './RecentProposals'
 
 export function GovernanceOverviewView() {
     useGovWindowTitle('Overview')
-    const { daoName, iconURL, path } = useGovernor()
+    const { path } = useGovernor()
+    // const { daoName, iconURL } = useGovernor()
     
     return (
-        <GovernancePage
-            title={
-                <h1 className='text-2xl md:text-3xl font-bold text-white tracking-tighter'>
-                    <div className='flex items-center gap-2'>
-                        <ImageWithFallback
-                            src={iconURL}
-                            size={36}
-                            alt={`Icon for ${daoName ?? 'DAO'}`}
-                        />
-                        <span>{daoName} Governance</span>
-                    </div>
-                </h1>
-            }
-            preContent={<OverviewHeader />}
-            hideDAOName={true}
-        >
+        <div className="w-full flex flex-col gap-6">
+            {/* <div className='flex items-center gap-2 mb-6'>
+                <ImageWithFallback
+                    src={iconURL}
+                    size={36}
+                    alt={`Icon for ${daoName ?? 'DAO'}`}
+                />
+            </div> */}
+            <OverviewHeader />
             <RecentProposals />
             <Card
                 className='mt-8'
@@ -43,6 +36,6 @@ export function GovernanceOverviewView() {
             >
                 <ProgramsList maxCount={3} />
             </Card>
-        </GovernancePage>
+        </div>
     )
 }

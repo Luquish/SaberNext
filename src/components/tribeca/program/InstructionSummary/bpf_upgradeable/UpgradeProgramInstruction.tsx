@@ -35,7 +35,7 @@ function UpgradeProgramInstruction({ data }: Props) {
                 <>
                     &nbsp;to&nbsp;
                     <a
-                        className="hover:text-primary"
+                        className="hover:text-saber"
                         href={programDeployBuffer.verifiableBuild.build.build.source}
                         target="_blank"
                         rel="noreferrer"

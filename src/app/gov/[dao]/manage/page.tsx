@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { Button } from '@/components/tribeca/Button'
 import { Card } from '@/components/tribeca/Card'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { useExecutiveCouncil } from '@/hooks/tribeca/useExecutiveCouncil'
 import { useGovernor } from '@/hooks/tribeca/useGovernor'
 import { TabNav } from '@/components/tribeca/manage/TabNav'

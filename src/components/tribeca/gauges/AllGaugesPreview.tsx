@@ -13,7 +13,7 @@ function AllGaugesPreview() {
     
     return (
         <Card
-            className="flex items-center justify-between"
+            className="w-full flex justify-center"
             title="All Gauges"
             link={{
                 title: 'View all gauges',

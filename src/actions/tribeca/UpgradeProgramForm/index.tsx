@@ -101,7 +101,7 @@ function UpgradeProgramForm({ onSelect }: Props) {
                                     upgrade authority{' '}
                                     <AddressLink address={finalSmartWallet} showCopy /> by following{' '}
                                     <a
-                                        className="text-primary hover:underline"
+                                        className="text-saber hover:underline"
                                         href="https://github.com/gokiprotocol/goki-cli"
                                         target="_blank"
                                         rel="noreferrer"

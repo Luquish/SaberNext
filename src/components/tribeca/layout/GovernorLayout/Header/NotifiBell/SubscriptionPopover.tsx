@@ -281,7 +281,7 @@ export function SubscriptionPopover({
                                 onChange={toggleAlert}
                                 className={`
                                     relative inline-flex items-center h-6 rounded-full w-11 transition-colors
-                                    ${isSubscribed ? 'bg-primary' : 'bg-warmGray-600'}
+                                    ${isSubscribed ? 'bg-saber' : 'bg-warmGray-600'}
                                 `}
                             >
                                 <span

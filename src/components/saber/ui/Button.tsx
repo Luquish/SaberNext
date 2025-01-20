@@ -32,7 +32,7 @@ export function Button({
                 'flex items-center justify-center gap-1',
                 'text-slate-200',
                 // Tipos
-                type === 'primary' && 'bg-saber-dark hover:bg-saber-light',
+                type === 'primary' && 'bg-saber hover:bg-saber/20',
                 type === 'secondary' && 'bg-slate-900 hover:bg-slate-800',
                 type === 'danger' && 'bg-red-800 hover:bg-red-700',
                 // Tamaños
@@ -40,7 +40,7 @@ export function Button({
                 size === 'large' && 'py-2 px-3 text-sm',
                 size === 'full' && 'py-2 px-3 text-sm w-full',
                 // Estados
-                disabled && 'opacity-50 cursor-not-allowed hover:bg-saber-dark',
+                disabled && 'opacity-50 cursor-not-allowed hover:bg-saber',
                 !disabled && 'cursor-pointer',
                 className
             )}

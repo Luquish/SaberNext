@@ -6,7 +6,7 @@
 function Badge({ children, className }: { children: React.ReactNode; className?: string }) {
     return (
         <span 
-            className={`bg-primary text-white px-2 py-0.5 rounded-md flex items-center justify-center ${className || ''}`}
+            className={`bg-saber text-white px-2 py-0.5 rounded-md flex items-center justify-center ${className || ''}`}
         >
             {children}
         </span>

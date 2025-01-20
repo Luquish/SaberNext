@@ -1,7 +1,7 @@
 'use client'
 
 import { Card } from '@/components/tribeca/Card'
-import { GovernancePage } from '@/components/tribeca/GovernancePage'
+import { GovernancePage } from '@/components/tribeca/overview/GovernancePage'
 import { ProgramsList } from '@/components/tribeca/programs/ProgramsList'
 
 export default function ProgramsView() {

@@ -20,7 +20,7 @@ export function SubscriptionCard({ body, switchGroup }: Props) {
                     <span className="text-xs">Powered by</span>
                     <NotifiLogo className="h-4 w-16 ml-1 pb-1" />
                     <span className="flex-grow"></span>
-                    <span className="text-xs ml-1 hover:text-primary">
+                    <span className="text-xs ml-1 hover:text-saber">
                         <a
                             href="https://notifi.network/faqs"
                             target="_blank"

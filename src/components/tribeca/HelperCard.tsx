@@ -15,7 +15,7 @@ function HelperCard({
     className,
 }: Props) {
     const variants = {
-        primary: 'border-primary bg-primary bg-opacity-20 text-primary-100',
+        primary: 'border-saber bg-saber bg-opacity-20 text-saber shadow-[0_0_10px_rgba(74,222,128,0.3)]',
         error: 'border-red-500 bg-red-500 bg-opacity-20 text-red-100',
         muted: 'border-slate-500 bg-slate-500 bg-opacity-40 text-slate-200',
         warn: 'border-yellow-500 bg-yellow-500 text-yellow-500 bg-opacity-20',

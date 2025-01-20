@@ -35,7 +35,7 @@ function IXAccounts({ accounts }: IXAccountsProps) {
                             <div className="flex items-center gap-2">
                                 {account.isWritable && (
                                     <div className="border text-gray-500 px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-2">
-                                        <div className="h-2 w-2 bg-primary rounded-full" />
+                                        <div className="h-2 w-2 bg-saber rounded-full" />
                                         <span>writable</span>
                                     </div>
                                 )}
