@@ -31,7 +31,7 @@ export function PageNav({ currentPage, setCurrentPage, numPages }: Props) {
                         <li key={i}>
                             <button
                                 className={`transition-colors ${
-                                    currentPage === i ? 'text-saber-300' : ''
+                                    currentPage === i ? 'text-saber' : ''
                                 }`}
                                 onClick={() => setCurrentPage(i)}
                             >

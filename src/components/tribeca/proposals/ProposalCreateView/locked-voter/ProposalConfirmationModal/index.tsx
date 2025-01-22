@@ -6,7 +6,7 @@ import type { TransactionInstruction } from '@solana/web3.js'
 import { GovernorWrapper } from '@tribecahq/tribeca-sdk'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import ReactMarkdown from 'react-markdown'
-import { useNavigate } from 'react-router';
+import { useRouter } from 'next/navigation'
 import invariant from 'tiny-invariant';
 
 import { useSDK } from '@/contexts/tribeca/sdk';
@@ -41,7 +41,7 @@ export function ProposalConfirmModal({
     const { votingPeriodFmt } = useGovernorParams();
     const { handleTX } = useSail();
     const { wrapTx } = useWrapTx();
-    const navigate = useNavigate();
+    const router = useRouter();
 
     const doProposeTransaction = async () => {
         invariant(tribecaMut);
@@ -69,7 +69,7 @@ export function ProposalConfirmModal({
                 -4
             )} created`,
         });
-        navigate(`${path}/proposals/${createProposal.index.toString()}`);
+        router.push(`${path}/proposals/${createProposal.index.toString()}`);
         modalProps.onDismiss();
     };
 

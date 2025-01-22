@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { PublicKey } from '@solana/web3.js';
+
 
 import type { ActionType } from '@/actions/tribeca/types';
 import { ACTIONS } from '@/actions/tribeca/types';
@@ -7,7 +9,6 @@ import { useGovernor } from '@/hooks/tribeca/useGovernor';
 import { HelperCard } from '@/components/tribeca/HelperCard';
 import { Select } from '@/components/tribeca/inputs/InputText';
 import { LoadingPage } from '@/components/tribeca/LoadingPage';
-import { PublicKey } from '@solana/web3.js';
 
 interface Props {
   txRaw: string;
@@ -35,9 +36,9 @@ export const ProposalTXForm: React.FC<Props> = ({
     const currentAction = ACTIONS.find((action) => action.title === actionType);
 
     return (
-        <div tw='grid gap-4'>
-            <label tw='flex flex-col gap-1' htmlFor='proposedAction'>
-                <span tw='text-sm'>Proposed Action</span>
+        <div className='grid gap-4'>
+            <label className='flex flex-col gap-1' htmlFor='proposedAction'>
+                <span className='text-sm'>Proposed Action</span>
                 <Select
                     value={actionType}
                     onChange={(e) => {

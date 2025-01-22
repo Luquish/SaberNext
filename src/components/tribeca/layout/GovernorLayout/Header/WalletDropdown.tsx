@@ -56,6 +56,8 @@ export function WalletDropdown({ className }: Props) {
                                             className='h-4 w-4'
                                             src={solanaWallet.adapter.icon}
                                             alt={`Icon for wallet ${solanaWallet.adapter.name}`}
+                                            width={16}
+                                            height={16}
                                         />
                                     )}
                                 </>

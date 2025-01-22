@@ -38,9 +38,10 @@ function ProposalsListView() {
 
     return (
         <GovernancePage 
-            title="Governance Proposals" 
-            right={<LegendsNeverDie />}
-        >
+            title="Governance Proposals" >
+            <div className="flex justify-center mb-8">
+                <LegendsNeverDie />
+            </div>
             <Card
                 title={
                     <div className="flex w-full items-center justify-between">

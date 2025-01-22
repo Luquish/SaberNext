@@ -108,7 +108,7 @@ function AllGaugesInner() {
                 title={
                     <>
                         <span>All Gauges</span>
-                        <Button variant="outline" onClick={syncGauges}>
+                        <Button variant="outline" onClick={syncGauges} className="!bg-secondary !text-white">
                             Sync Rewards with Gauges
                         </Button>
                     </>

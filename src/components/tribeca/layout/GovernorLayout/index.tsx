@@ -11,7 +11,7 @@ interface Props {
 export function GovernorLayout({ children }: Props) {
     return (
         <div className="flex flex-col min-h-screen w-full">
-            <Header placeholder={false} />
+            <Header placeholder={true} />
             <Nav />
             <div className="w-full">
                 {children}

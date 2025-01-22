@@ -2,9 +2,9 @@
 
 import { DEFAULT_NETWORK_CONFIG_MAP } from '@saberhq/solana-contrib'
 import { useWallet } from '@solana/wallet-adapter-react'
-import { WalletDisconnectButton } from '@solana/wallet-adapter-react-ui'
 import copyToClipboard from 'copy-to-clipboard'
 import { FaCopy, FaExternalLinkAlt } from 'react-icons/fa'
+import { FiLogOut } from 'react-icons/fi'
 
 import { notify } from '@/utils/tribeca/notifications'
 import { useEnvironment } from '@/hooks/tribeca/useEnvironment'
@@ -18,10 +18,24 @@ interface Props {
 
 export function AccountPopover({ close }: Props) {
     const { network } = useEnvironment()
-    const { publicKey } = useWallet()
+    const { publicKey, disconnect } = useWallet()
     
     if (!publicKey) {
         return null
+    }
+
+    const handleDisconnect = async () => {
+        try {
+            await disconnect()
+            close?.()
+            notify({ message: 'Wallet disconnected successfully.' })
+        } catch (error) {
+            console.error('Error disconnecting wallet:', error)
+            notify({ 
+                message: 'Failed to disconnect wallet.', 
+                type: 'error', 
+            })
+        }
     }
 
     return (
@@ -63,7 +77,15 @@ export function AccountPopover({ close }: Props) {
                         </MouseoverTooltip>
                     </div>
                 </div>
-                <WalletDisconnectButton />
+                <div className="p-4">
+                    <Button
+                        onClick={handleDisconnect}
+                        className="w-full flex items-center justify-center gap-2 text-white hover:bg-warmGray-700"
+                    >
+                        <FiLogOut />
+                        Disconnect Wallet
+                    </Button>
+                </div>
             </div>
         </div>
     )

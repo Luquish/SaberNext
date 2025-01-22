@@ -80,7 +80,7 @@ function GaugeWeightsForm({ filterTerm }: GaugeWeightsFormProps) {
         return (
             <EmptyState
                 title="Locker Escrow Not Found"
-                icon={<FaExclamationCircle />}
+                icon={<FaExclamationCircle className="w-20 h-20"/>}
             >
                 <div className="py-2.5">
                     <Link href={`/gov/${dao}/locker`}>

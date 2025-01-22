@@ -1,6 +1,7 @@
 import { Fraction, Percent, ZERO } from '@saberhq/token-utils'
 import { formatDuration, intervalToDuration } from 'date-fns'
 import JSBI from 'jsbi'
+
 import { CURRENCY_INFO, CurrencyMarket } from '@/utils/tribeca/currencies'
 
 /**

@@ -11,6 +11,7 @@ import BN from 'bn.js';
 import { useMutation } from '@tanstack/react-query';
 import clsx from 'clsx';
 import Image from 'next/image';
+import { use } from 'react';
 
 import { Saber } from '@/components/saber/svg/saber';
 import { PoolData } from '@/types/saber';
@@ -427,17 +428,18 @@ const ReplicaEmissionRate = (props: { replica: NonNullable<PoolData['replicaQuar
     );
 };
 
-export default function PoolPage({ params }: { params: { id: string } }) {
+export default function PoolPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = use(params);
     const pools = usePoolsInfo();
     console.log(pools);
-    console.log(params.id);
+    console.log(id);
 
     const leveragedRef = useRef<PopoverRef>();
     console.log(leveragedRef);
 
     const pool = useMemo(() => {
-        return pools?.data?.pools?.find((x) => getPoolId(x.info.id) === getPoolId(params.id));
-    }, [params.id, pools]);
+        return pools?.data?.pools?.find((x) => getPoolId(x.info.id) === getPoolId(id));
+    }, [id, pools]);
 
     const token0 = useMemo(() => {
         return pool?.info.tokens[0];
@@ -685,9 +687,4 @@ export default function PoolPage({ params }: { params: { id: string } }) {
             </div>
         </>
     );
-}
-
-export const metadata = {
-    title: 'Saber Pool | Solana AMM',
-    description: 'Saber is an automated market maker for trading stable asset pairs on Solana.',
 }

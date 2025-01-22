@@ -4,7 +4,7 @@ import { useCallback, useRef } from 'react'
 import { BaseWalletDisconnectButton, WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useWallet } from '@solana/wallet-adapter-react'
 import Link from 'next/link'
-import { ImCross } from 'react-icons/im'
+// import { ImCross } from 'react-icons/im'
 // import { SiGitbook } from 'react-icons/si'
 import { FaCog, FaExternalLinkAlt } from 'react-icons/fa'
 // import { FaMedium, FaXTwitter } from 'react-icons/fa6'
@@ -36,7 +36,7 @@ interface NavLinkProps {
 function NavLink({ href, external, children }: NavLinkProps) {
     const pathname = usePathname()
     const isActive = pathname === href || 
-        (href === '/' && pathname === '/pools') ||
+        (href === '/' &&  pathname.startsWith('/pools/')) ||
         (href === '/gov/sbr' && pathname.startsWith('/gov/'))
 
     if (external) {
@@ -140,7 +140,7 @@ function DisconnectButton() {
     
     return (
         <div className="flex items-center gap-2">
-            <ImCross className="w-3 h-3" />
+            {/* <ImCross className="w-3 h-3" /> */}
             <BaseWalletDisconnectButton 
                 labels={{
                     disconnecting: 'Disconnecting ...',

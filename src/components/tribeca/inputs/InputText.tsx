@@ -3,7 +3,7 @@
 import { forwardRef } from 'react'
 
 const commonClasses = `
-    py-1.5 px-3 border border-gray-200 rounded m-0 
+    py-1.5 px-3 border border-gray-200 rounded m-0 bg-secondary
     transition-colors appearance-none text-sm outline-none
     focus:ring-1 focus:ring-primary-300
     dark:bg-gray-850 dark:border-gray-700 dark:focus:bg-transparent dark:text-white

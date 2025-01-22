@@ -28,6 +28,8 @@ function Profile({ address, href }: Props) {
             className="h-10 w-10 rounded-full"
             alt={`Profile of ${displayName ?? address.toString()}`}
             src={addressImage ?? makeBlockie(address.toString())}
+            width={40}
+            height={40}
         />
     )
     

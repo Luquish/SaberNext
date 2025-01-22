@@ -49,7 +49,7 @@ function SetupVoting({ className }: SetupVotingProps) {
                     </ExternalLink>
                     <div>
                         <Link href={`/gov/${governor.toString()}/locker/lock`}>
-                            <Button size="md" variant="primary">
+                            <Button size="md" variant="primary"  >
                                 Get Started
                             </Button>
                         </Link>

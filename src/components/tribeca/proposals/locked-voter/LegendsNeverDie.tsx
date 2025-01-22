@@ -7,14 +7,14 @@ interface LegendItemProps {
 }
 
 function LegendItem({ children }: LegendItemProps) {
-    const getColorClass = (status: string) => {
+    const getColorAndGlow = (status: string) => {
         switch (status) {
         case 'Active':
-            return 'bg-accent'
+            return 'bg-accent shadow-[0_0_10px_var(--accent)]'
         case 'Passed':
-            return 'bg-saber'
+            return 'bg-saber shadow-[0_0_10px_var(--saber)]'
         case 'Failed':
-            return 'bg-warmGray-600'
+            return 'bg-warmGray-600 shadow-[0_0_10px_var(--warmGray-600)]'
         default:
             return ''
         }
@@ -26,7 +26,7 @@ function LegendItem({ children }: LegendItemProps) {
                 className={`
                     absolute left-0 top-1/2 -translate-y-1/2
                     mr-2.5 w-1 h-3.5 inline-block leading-none
-                    ${getColorClass(children)}
+                    ${getColorAndGlow(children)}
                 `}
                 aria-hidden="true"
             />
@@ -42,11 +42,25 @@ function LegendsNeverDie() {
     const { proposalCount } = useGovernor()
 
     return (
-        <div className="bg-warmGray-800 p-5 flex gap-11 rounded">
-            <div className="text-2xl text-white font-medium bg-coolGray-800 rounded-full h-20 w-20 flex items-center justify-center">
-                {proposalCount?.toLocaleString()}
+        <div className="border-[#595959] border-2 p-3 flex gap-11 rounded">
+            <div 
+                className="text-2xl text-white font-medium rounded-full h-20 w-20 flex items-center justify-center relative overflow-hidden"
+                style={{
+                    background: `radial-gradient(circle at center,
+                        var(--accent) 0%,
+                        var(--saber) 50%,
+                        var(--warmGray-600) 100%
+                    )`,
+                    boxShadow: 'inset 0 0 15px rgba(0,0,0,0.3)',
+                }}
+            >
+                <div className="z-10">{proposalCount?.toLocaleString()}</div>
+                <div 
+                    className="absolute inset-0 bg-coolGray-800/80"
+                    style={{ mixBlendMode: 'multiply' }}
+                />
             </div>
-            <legend className="flex flex-col gap-1 text-sm justify-center font-bold tracking-tight">
+            <legend className="flex flex-col gap-1 text-sm justify-center font-regular tracking-tight">
                 <LegendItem>Active</LegendItem>
                 <LegendItem>Passed</LegendItem>
                 <LegendItem>Failed</LegendItem>

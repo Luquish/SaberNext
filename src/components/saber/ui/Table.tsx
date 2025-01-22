@@ -91,7 +91,7 @@ export function Table({
             {!blockView && (
                 <div className="hidden lg:block rounded-lg overflow-hidden">
                     <div className="grid gap-3 w-full">
-                        <div className="flex bg-saber/20 border border-black py-3 px-5 rounded-lg shadow-[0_0_5px_rgba(85,153,255,0.2)]">
+                        <div className="flex bg-saber/60 border border-black py-3 px-5 rounded-lg shadow-[0_0_5px_rgba(85,153,255,0.2)]">
                             {header.map((headerItem, i) => (
                                 <div 
                                     className="font-bold pr-5 flex-1" 

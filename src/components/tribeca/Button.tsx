@@ -37,7 +37,7 @@ const getVariantClasses = (variant: Variant = 'default'): string => {
     const variants = {
         default: 'border border-gray-200 bg-white shadow-sm hover:bg-gray-100 hover:border-gray-300 transition-colors',
         outline: 'border hover:border-gray-200 transition-colors text-gray-800 dark:text-white',
-        primary: 'text-black bg-saber shadow border border-saber-600',
+        primary: 'text-black bg-saber shadow border border-saber',
         secondary: 'text-white bg-accent shadow border border-accent-600',
         muted: 'text-gray-200 bg-gray-700 hover:bg-gray-500',
         danger: 'bg-red-500 text-black font-bold',
@@ -70,7 +70,7 @@ function Button({
 }: ButtonProps) {
     const [loading, setLoading] = useState(false)
 
-    const baseClasses = 'flex flex-row items-center justify-center leading-normal rounded-sm text-sm font-semibold transform active:scale-98 text-gray-800 hover:bg-opacity-90 transition-all'
+    const baseClasses = 'flex flex-row items-center justify-center leading-normal rounded-sm text-sm font-semibold transform active:scale-98 text-black bg-white hover:bg-opacity-90 transition-all'
     const disabledClasses = 'disabled:bg-gray-400 disabled:border-gray-600 disabled:text-gray-600 disabled:cursor-not-allowed'
     const iconClasses = icon ? 'rounded-full w-7 h-7 p-0' : ''
     

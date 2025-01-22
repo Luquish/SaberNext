@@ -20,7 +20,7 @@ export default function TribecaLayout({
             <TribecaProviders>
                 <GovernorLayout>
                     <div className="min-h-screen w-full">
-                        <div className="w-full px-4">
+                        <div className="w-full max-w-7xl mx-auto px-4">
                             {children}
                             <Toaster position="bottom-right">
                                 {(t) => (

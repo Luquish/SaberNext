@@ -106,7 +106,7 @@ function EscrowInfo({ className }: EscrowInfoProps) {
                         <OuterButtonContainer escrowExists={!!escrow}>
                             <Link href={`${path}/locker/lock`} className="flex-grow">
                                 <Button
-                                    className="w-full hover:dark:text-saber hover:dark:border-saber"
+                                    className="!bg-secondary !text-white w-full"
                                     type="button"
                                     size="md"
                                     variant="outline"

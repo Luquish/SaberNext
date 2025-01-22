@@ -34,7 +34,7 @@
     "**/*.tsx",
     "src/**/*.ts",
     "src/**/*.tsx"
-  ],
+, "scripts/check-hooks.js"  ],
   "exclude": [
     "node_modules"
   ]

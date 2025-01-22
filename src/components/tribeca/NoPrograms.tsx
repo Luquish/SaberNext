@@ -20,10 +20,10 @@ function NoPrograms({ smartWallet }: Props) {
             title="This DAO doesn't own any programs."
         >
             <div className="text-center">
-                <p>
+                <span>
                     The DAO at address <AddressLink address={smartWallet} showCopy />{' '}
                     does not own any programs.
-                </p>
+                </span>
                 <p>
                     <a
                         className="text-saber"

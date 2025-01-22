@@ -8,6 +8,7 @@ import { useGovernor } from '@/hooks/tribeca/useGovernor'
 const TITLES = {
     'overview': 'Governance Overview',
     'proposals': 'Governance Proposals',
+    'programs': 'Governance Programs',
     'locker': 'Governance Locker',
     'gauges': 'Governance Gauges',
     'details': 'Governance Parameters',
@@ -22,6 +23,10 @@ export const NAV_LINKS = [
     {
         title: 'Proposals',
         href: '/proposals',
+    },
+    {
+        title: 'Programs',
+        href: '/programs',
     },
     {
         title: 'Locker',
@@ -70,8 +75,12 @@ function Nav({ className }: Props) {
     const pathname = usePathname()
     const navLinks = useNavLinks()
     
-    const currentPath = pathname.split('/').pop() || ''
-    const pageTitle = TITLES[currentPath as keyof typeof TITLES] || 'Overview'
+    const pathParts = pathname.split('/')
+    const currentPath = pathParts.includes('proposals') 
+        ? 'proposals'
+        : pathParts.pop() || ''
+        
+    const pageTitle = TITLES[currentPath as keyof typeof TITLES] || 'Governance Overview'
 
     return (
         <div className="flex flex-col items-center w-full pt-5 mt-16">
@@ -87,7 +96,7 @@ function Nav({ className }: Props) {
                         const fullPath = `/gov/${dao ?? ''}${href}`
                         const isActive = href === '' 
                             ? pathname === `/gov/${dao}/overview` || pathname === `/gov/${dao}`
-                            : pathname === fullPath
+                            : pathname.startsWith(fullPath)
                         
                         return (
                             <Link

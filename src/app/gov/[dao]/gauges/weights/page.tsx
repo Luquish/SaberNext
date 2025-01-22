@@ -61,7 +61,7 @@ function GaugeWeightsPage() {
                             each pool gets.
                         </p>
                         <ExternalLink
-                            className="mt-4"
+                            className="mt-4 text-saber"
                             href="https://docs.tribeca.so/features/gauges"
                         >
                             Learn more
@@ -78,7 +78,7 @@ function GaugeWeightsPage() {
                             <InputSearchText
                                 onChange={(evt) => setFilterTerm(evt.target.value)}
                                 value={filterTerm}
-                                placeholder="Filter Gauges.."
+                                placeholder="Filter Gauges..."
                             />
                         </div>
                     }
