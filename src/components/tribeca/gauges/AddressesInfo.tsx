@@ -19,10 +19,11 @@ function AddressesInfo({ addresses }: Props) {
         <Card title="Related Accounts" bodyScrollX className="w-full">
             <TableCardBody>
                 {Object.entries(addresses).map(([key, info]) => (
-                    <tr 
-                        key={key} 
+                    <tr
+                        key={key}
                         className="border-b border-warmGray-800/20 last:border-b-0"
                     >
+                        {/* Celda izquierda con etiqueta y descripción */}
                         <td className="py-6 pl-7">
                             <div>
                                 <div className="text-white font-semibold">
@@ -33,12 +34,21 @@ function AddressesInfo({ addresses }: Props) {
                                 </div>
                             </div>
                         </td>
+
+                        {/* Celda derecha con dirección y detalles */}
                         <td className="py-6 pr-7 text-right">
-                            <AddressWithContext
-                                pubkey={new PublicKey(info.address.toString())}
-                                prefixLinkUrlWithAnchor
-                                className="text-saber"
-                            />
+                            <div className="flex flex-col items-end gap-1 text-saber">
+                                {/* Dirección o PublicKey */}
+                                <AddressWithContext
+                                    pubkey={new PublicKey(info.address.toString())}
+                                    prefixLinkUrlWithAnchor
+                                    className="text-saber"
+                                />
+                                {/* Balance o descripción adicional */}
+                                <div className="text-sm text-gray-400">
+                                    {info.description}
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 ))}

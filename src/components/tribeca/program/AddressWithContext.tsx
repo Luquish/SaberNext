@@ -55,7 +55,7 @@ export const AddressWithContext = ({
 }: Props) => {
     const info = useAccountData(pubkey);
     return (
-        <div tw="flex items-end flex-col gap-0.5" className={className}>
+        <div className={`flex flex-col items-start gap-1 ${className}`}>
             {info.data?.accountInfo.executable ? (
                 <ProgramLabel
                     address={pubkey}
@@ -65,7 +65,7 @@ export const AddressWithContext = ({
                 />
             ) : (
                 <AddressLink
-                    className="dark:text-saber hover:text-opacity-80 font-mono"
+                    className="text-saber font-mono"
                     address={pubkey}
                     showCopy
                     showRaw={false}
@@ -73,10 +73,12 @@ export const AddressWithContext = ({
                     prefixLinkUrlWithAnchor={prefixLinkUrlWithAnchor}
                 />
             )}
+            {/* Se asegura que AccountInfo esté en una línea separada */}
             <AccountInfo pubkey={pubkey} validator={validator} />
         </div>
     );
 };
+
 
 interface Props {
   pubkey: PublicKey;
@@ -140,34 +142,34 @@ export const AccountInfo = ({ pubkey, validator }: Props) => {
     const owner = info.data.accountInfo.owner;
 
     return (
-        <span tw="text-gray-600 dark:text-gray-300">
+        <div className="text-saber">
             {owner ? (
                 <>
-                    {owner.equals(SYSVAR_OWNER) ? (
-                        'Sysvar.'
-                    ) : (
-                        <>
-                            {accountName ? (
-                                <>
+                    {/* Propietario y Balance juntos en la segunda línea */}
+                    <div className="mt-1 text-white">
+                        {owner.equals(SYSVAR_OWNER) ? (
+                            'Sysvar.'
+                        ) : (
+                            <>
+                                {accountName ? (
                                     <Link
                                         className="text-saber hover:text-white transition-colors"
                                         href={`/address/${info.data.accountId.toString()}`}
                                     >
                                         {accountName}
-                                    </Link>{' '}
-                  o
-                                </>
-                            ) : (
-                                'O'
-                            )}
-              wned by <ProgramLabel address={owner} />.
-                        </>
-                    )}{' '}
-          Balance is <SolAmount lamports={info.data.accountInfo.lamports} />.
+                                    </Link>
+                                ) : (
+                                    'Owned by'
+                                )} owned by{' '}
+                                <ProgramLabel address={owner} />. Balance is{' '}
+                                <SolAmount lamports={info.data.accountInfo.lamports} />.
+                            </>
+                        )}
+                    </div>
                 </>
             ) : (
                 'Account doesn\'t exist'
             )}
-        </span>
+        </div>
     );
 };

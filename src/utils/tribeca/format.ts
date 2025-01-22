@@ -93,6 +93,12 @@ export function formatCurrency(
     currency: CurrencyMarket,
     numberFormatOptions: Intl.NumberFormatOptions = {}
 ): string {
+    if (currency === CurrencyMarket.NONE) {
+        return amount.toLocaleString(undefined, {
+            minimumSignificantDigits: 4,
+            ...numberFormatOptions,
+        })
+    }
     if (currency === CurrencyMarket.USD) {
         return amount.toLocaleString(undefined, {
             ...FORMAT_DOLLARS,
@@ -115,6 +121,13 @@ export function formatCurrencyWhole(
     currency: CurrencyMarket,
     numberFormatOptions: Intl.NumberFormatOptions = {}
 ): string {
+    if (currency === CurrencyMarket.NONE) {
+        return amount.toLocaleString(undefined, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+            ...numberFormatOptions,
+        })
+    }
     if (currency === CurrencyMarket.USD) {
         return amount.toLocaleString(undefined, {
             ...FORMAT_DOLLARS_WHOLE,

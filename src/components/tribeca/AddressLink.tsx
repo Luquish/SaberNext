@@ -36,7 +36,7 @@ export const AddressLink = ({
     return (
         <div className="inline-flex items-center">
             <a
-                className={`text-gray-800 dark:text-warmGray-200 hover:text-saber ${className || ''}`}
+                className={`hover:text-saber ${className || ''}`}
                 href={`${urlPrefix}/address/${address.toString()}?cluster=${
                     network?.toString() ?? ''
                 }`}

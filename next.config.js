@@ -167,6 +167,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'solanahub.app',
             },
+            {
+                protocol: 'https',
+                hostname: 'gateway.irys.xyz',
+            },
         ],
     },
 }

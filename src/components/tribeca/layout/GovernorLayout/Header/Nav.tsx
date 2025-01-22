@@ -6,11 +6,11 @@ import { useParams, usePathname } from 'next/navigation'
 import { useGovernor } from '@/hooks/tribeca/useGovernor'
 
 const TITLES = {
-    '': 'Overview',
-    'proposals': 'Proposals',
-    'locker': 'Locker',
-    'gauges': 'Gauges',
-    'details': 'Parameters',
+    'overview': 'Governance Overview',
+    'proposals': 'Governance Proposals',
+    'locker': 'Governance Locker',
+    'gauges': 'Governance Gauges',
+    'details': 'Governance Parameters',
 } as const
 
 export const NAV_LINKS = [
@@ -73,63 +73,26 @@ function Nav({ className }: Props) {
     const currentPath = pathname.split('/').pop() || ''
     const pageTitle = TITLES[currentPath as keyof typeof TITLES] || 'Overview'
 
-    // Función para dividir y estilizar el título
-    const renderStyledTitle = (title: string) => {
-        if (title === 'Overview') {
-            return (
-                <>
-                    Governance <span className="text-saber">Overview</span>
-                </>
-            )
-        }
-        if (title === 'Proposals') {
-            return (
-                <>
-                    Governance <span className="text-saber">Proposals</span>
-                </>
-            )
-        }
-        if (title === 'Locker') {
-            return (
-                <>
-                    Governance <span className="text-saber">Locker</span>
-                </>
-            )
-        }
-        if (title === 'Gauges') {
-            return (
-                <>
-                    Governance <span className="text-saber">Gauges</span>
-                </>
-            )
-        }
-        if (title === 'Parameters') {
-            return (
-                <>
-                    Governance <span className="text-saber">Parameters</span>
-                </>
-            )
-        }
-        // Para 'Gauges' y otros títulos de una sola palabra
-        return <span className="text-saber">{title}</span>
-    }
-
     return (
-        <div className="flex flex-col items-center w-full pt-5">
-            <h1 className="text-2xl text-white mb-2">
-                {renderStyledTitle(pageTitle)}
+        <div className="flex flex-col items-center w-full pt-5 mt-16">
+            <h1 className="text-3xl text-white mb-2">
+                <span className="bg-gradient-radial from-[#5599FF] via-[#88CCFF] to-[#5599FF] bg-clip-text text-transparent">
+                    {pageTitle}
+                </span>
             </h1>
-            <div className="w-full max-w-7xl mx-auto">
-                <div className="w-full border-b border-coolGray-700 mb-6" />
+            <div className="w-full max-w-7xl mx-auto mt-16">
+                <div className="w-full border-b border-coolGray-700 mb-4" />
                 <nav className={`inline-flex bg-[#1a1a1a] rounded-lg relative ${className ?? ''}`}>
                     {navLinks.map(({ title, href }) => {
                         const fullPath = `/gov/${dao ?? ''}${href}`
-                        const isActive = pathname === fullPath
+                        const isActive = href === '' 
+                            ? pathname === `/gov/${dao}/overview` || pathname === `/gov/${dao}`
+                            : pathname === fullPath
                         
                         return (
                             <Link
                                 key={href}
-                                href={fullPath}
+                                href={fullPath || `/gov/${dao}/overview`}
                                 className={`
                                     px-4 py-2.5 text-sm font-medium transition-all duration-200 relative z-10
                                     ${isActive 
@@ -148,7 +111,7 @@ function Nav({ className }: Props) {
                         )
                     })}
                 </nav>
-                <div className="w-full border-b border-coolGray-700 mt-6" />
+                <div className="w-full border-b border-coolGray-700 mt-4 mb-10" />
             </div>
         </div>
     )

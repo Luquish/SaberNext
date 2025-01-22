@@ -51,15 +51,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
             lang="en" 
             className={`${interDisplay.className}`}
         >
-            <body className="bg-gradient-to-b from-[#000000] to-[#27313E]">
+            <body className="bg-gradient-to-b from-[#000000] to-[#394e6c] min-h-screen flex flex-col">
                 <SaberProviders>
-                    <div className="text-white min-h-screen w-full flex justify-center p-5">
-                        <div className="max-w-7xl flex flex-col w-full gap-5">
+                    <div className="text-white min-h-screen w-full p-5">
+                        <div>
                             <header>
                                 <Navbar />
                             </header>
                             
-                            <main>
+                            <main className="flex-1">
                                 {children}
                             </main>
                             

@@ -37,7 +37,7 @@ const getVariantClasses = (variant: Variant = 'default'): string => {
     const variants = {
         default: 'border border-gray-200 bg-white shadow-sm hover:bg-gray-100 hover:border-gray-300 transition-colors',
         outline: 'border hover:border-gray-200 transition-colors text-gray-800 dark:text-white',
-        primary: 'text-black bg-saber shadow border border-primary-600',
+        primary: 'text-black bg-saber shadow border border-saber-600',
         secondary: 'text-white bg-accent shadow border border-accent-600',
         muted: 'text-gray-200 bg-gray-700 hover:bg-gray-500',
         danger: 'bg-red-500 text-black font-bold',

@@ -19,8 +19,8 @@ export default function TribecaLayout({
         <SaberProviders>
             <TribecaProviders>
                 <GovernorLayout>
-                    <div className="min-h-screen w-full flex justify-center mt-5">
-                        <div className="max-w-7xl flex flex-col w-full">
+                    <div className="min-h-screen w-full">
+                        <div className="w-full px-4">
                             {children}
                             <Toaster position="bottom-right">
                                 {(t) => (

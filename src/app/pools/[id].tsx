@@ -44,6 +44,7 @@ import { useUpgradeStake } from '@/hooks/saber/user/useUpgradeStake';
 import useDeprecatedPools from '@/hooks/saber/useDeprecatedPools';
 import BigNumber from 'bignumber.js';
 
+
 const InfoPanel = (props: { data: any[][] }) => {
     return (
         <div className="grid grid-cols-2 text-sm gap-1 text-gray-200">
@@ -428,8 +429,11 @@ const ReplicaEmissionRate = (props: { replica: NonNullable<PoolData['replicaQuar
 
 export default function PoolPage({ params }: { params: { id: string } }) {
     const pools = usePoolsInfo();
+    console.log(pools);
+    console.log(params.id);
 
     const leveragedRef = useRef<PopoverRef>();
+    console.log(leveragedRef);
 
     const pool = useMemo(() => {
         return pools?.data?.pools?.find((x) => getPoolId(x.info.id) === getPoolId(params.id));

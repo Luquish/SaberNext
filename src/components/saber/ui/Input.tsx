@@ -55,11 +55,15 @@ function TextInput({
             placeholder={placeholder}
             defaultValue={defaultValue}
             className={clsx(
-                'bg-slate-800 relative z-10',
+                'bg-[#0B1221] relative z-10',
                 'text-slate-200 text-sm',
-                'rounded-lg py-2 px-3',
-                'focus:outline-none transition-colors',
+                'rounded py-1.5 px-2',
+                'focus:outline-none transition-all duration-200',
                 'placeholder:italic placeholder:text-slate-400',
+                'border border-[#1F2937]',
+                'shadow-[0_2px_8px_rgba(0,0,0,0.3)]',
+                'hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)]',
+                'hover:border-[#374151]',
                 size === 'full' && 'w-full',
                 className
             )}
@@ -105,7 +109,14 @@ function CheckboxInput({
 }) {
     return (
         <label className={clsx(
-            'flex items-center gap-1',
+            'flex items-center gap-2 py-1.5 px-2',
+            'text-sm text-slate-200',
+            'bg-[#0B1221] rounded',
+            'border border-[#1F2937]',
+            'shadow-[0_2px_8px_rgba(0,0,0,0.3)]',
+            'hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)]',
+            'hover:border-[#374151]',
+            'transition-all duration-200',
             size === 'full' && 'w-full',
             className
         )}>
@@ -131,12 +142,17 @@ function DropdownInput({
     return (
         <select
             {...register}
+            defaultValue=''
             className={clsx(
-                'bg-slate-800 relative z-10',
+                'bg-[#0B1221] relative z-10',
                 'text-slate-200 text-sm',
-                'rounded-lg py-2 px-3',
+                'rounded py-1.5 px-2',
                 'cursor-pointer',
-                'focus:outline-none transition-colors',
+                'focus:outline-none transition-all duration-200',
+                'border border-[#1F2937]',
+                'shadow-[0_2px_8px_rgba(0,0,0,0.3)]',
+                'hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)]',
+                'hover:border-[#374151]',
                 className
             )}
         >
@@ -180,7 +196,7 @@ export function Input(props: InputTypes) {
     if (props.type === InputType.CHECKBOX) {
         return (
             <Wrapper>
-                <div className="bg-slate-800 relative z-10 text-slate-200 rounded-lg py-2 px-3">
+                <div className="relative z-10 text-slate-200 rounded-lg py-2 px-3">
                     <CheckboxInput {...props} />
                 </div>
             </Wrapper>

@@ -5,6 +5,7 @@ import { mapValues } from 'lodash-es'
  * Available currency markets
  */
 export enum CurrencyMarket {
+    NONE = 'NONE',
     USD = 'USD',
     BTC = 'BTC',
     LUNA = 'LUNA',
@@ -77,6 +78,13 @@ export const getMarketIfExists = (token: Token): CurrencyMarket | null => {
  * Default options for formatting currencies in large amounts
  */
 export const CURRENCY_INFO: Record<CurrencyMarket, CurrencyInfo> = {
+    NONE: {
+        name: 'Select Currency',
+        symbol: '',
+        largeFormat: new Intl.NumberFormat(undefined, {
+            maximumFractionDigits: 2,
+        }),
+    },
     USD: {
         name: 'Stablecoin',
         symbol: 'USD',

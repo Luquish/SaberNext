@@ -216,7 +216,7 @@ function LockEscrowModal({ variant, ...modalProps }: LockEscrowModalProps) {
                                         <Button
                                             key={i}
                                             variant="outline"
-                                            className="px-4 rounded border-primary hover:border-primary bg-saber bg-opacity-20"
+                                            className="px-4 rounded border-saber hover:border-saber bg-saber bg-opacity-20"
                                             onClick={() => {
                                                 setDurationSeconds(seconds.toString())
                                             }}

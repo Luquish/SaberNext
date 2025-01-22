@@ -98,7 +98,7 @@ function ProposalActivate({ proposal, onActivate }: Props) {
                         <div className="flex justify-center items-center">
                             <Button
                                 disabled={!escrow}
-                                className="w-3/4 dark:text-white hover:dark:text-saber hover:dark:border-primary"
+                                className="w-3/4 dark:text-white hover:dark:text-saber hover:dark:border-saber"
                                 variant="outline"
                                 onClick={handleActivate}
                             >

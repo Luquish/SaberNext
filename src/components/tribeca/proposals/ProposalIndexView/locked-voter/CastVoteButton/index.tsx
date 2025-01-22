@@ -27,7 +27,7 @@ function CastVoteButton({ proposalInfo, side }: Props) {
             className="max-w-md"
             buttonProps={{
                 variant: 'outline',
-                className: 'border-white w-2/5 hover:border-primary hover:bg-saber hover:bg-opacity-20',
+                className: 'border-white w-2/5 hover:border-saber hover:bg-saber hover:bg-opacity-20',
             }}
             buttonLabel={getButtonLabel()}
         >

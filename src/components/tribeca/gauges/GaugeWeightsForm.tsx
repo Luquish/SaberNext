@@ -129,7 +129,7 @@ function GaugeWeightsForm({ filterTerm }: GaugeWeightsFormProps) {
                     buttonProps={{
                         variant: 'outline',
                         disabled: sharesDiff.length === 0,
-                        className: 'w-3/5 hover:not-disabled:(border-primary text-saber)',
+                        className: 'w-3/5 hover:not-disabled:(border-saber text-saber)',
                     }}
                 >
                     <SetWeightsModal />

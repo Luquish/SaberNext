@@ -7,7 +7,7 @@ import { ProposalStateLabel } from './ProposalStateLabel';
 
 export function PlaceholderCard() {
     return (
-        <div className="flex items-center justify-between py-5 px-6 border-l-2 border-l-transparent border-b border-b-warmGray-800 cursor-pointer hover:border-l-primary">
+        <div className="flex items-center justify-between py-5 px-6 border-l-2 border-l-transparent border-b border-b-warmGray-800 cursor-pointer hover:border-l-saber">
             <div>
                 <div className="h-5 flex items-center">
                     <ContentLoader className="h-3 rounded" />

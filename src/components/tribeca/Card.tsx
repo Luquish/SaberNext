@@ -40,7 +40,7 @@ function Card({
 
     return (
         <div className="w-full flex justify-center">
-            <div className={`w-full rounded bg-warmGray-850 shadow-xl flex flex-col ${className || ''}`}>
+            <div className={`w-full rounded bg-secondary bg-opacity-80 shadow-xl flex flex-col ${className || ''}`}>
                 {title && (
                     <div
                         className="h-16 flex items-center px-7 w-full text-white font-bold tracking-tight border-b border-warmGray-800"

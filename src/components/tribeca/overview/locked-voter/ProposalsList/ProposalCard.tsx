@@ -24,7 +24,7 @@ export function ProposalCard({ proposalInfo }: Props) {
         <div className="w-full">
             <Link
                 href={`${path}/proposals/${proposalInfo.index}`}
-                className="flex items-center justify-between py-5 px-6 border-l-2 border-l-transparent border-b border-b-warmGray-800 cursor-pointer hover:border-l-primary"
+                className="flex items-center justify-between py-5 px-6 border-l-2 border-l-transparent border-b border-b-warmGray-800 cursor-pointer hover:border-l-saber"
             >
                 <div className="flex items-center gap-5 w-3/4 md:w-[500px]">
                     {state === ProposalState.Active && (

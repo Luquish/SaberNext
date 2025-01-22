@@ -37,7 +37,7 @@ export function OverviewHeader() {
 
     return (
         <div className='flex flex-wrap gap-2.5'>
-            <StatCard className='flex-grow basis-full md:basis-auto bg-coolGray-800 p-5 rounded'>
+            <StatCard className='flex-grow basis-full md:basis-auto bg-transparent border border-[#595959] p-5 rounded'>
                 <StatInner className='flex flex-col'>
                     <div className='h-7 flex items-center'>
                         {lockedSupplyFmt ? (
@@ -48,13 +48,13 @@ export function OverviewHeader() {
                             <div className='flex animate-pulse bg-gray h-4 w-12 rounded' />
                         )}
                     </div>
-                    <span className='text-xs font-semibold text-coolGray-300 tracking-tighter'>
+                    <span className='text-white text-xs font-semibold tracking-tighter'>
                         {govToken?.symbol} Locked
                     </span>
                 </StatInner>
             </StatCard>
             
-            <StatCard className='flex-grow md:basis-[200px] md:flex-grow-0 bg-coolGray-800 p-5 rounded'>
+            <StatCard className='flex-grow md:basis-[200px] md:flex-grow-0 bg-transparent border border-[#595959] p-5 rounded'>
                 <StatInner className='flex flex-col'>
                     <div className='h-7 flex items-center'>
                         {totalVeTokens ? (
@@ -65,13 +65,13 @@ export function OverviewHeader() {
                             <div className='flex animate-pulse bg-gray h-4 w-12 rounded' />
                         )}
                     </div>
-                    <span className='text-xs font-semibold text-coolGray-300 tracking-tighter'>
+                    <span className='text-white text-xs font-semibold tracking-tighter'>
                         Total Supply of {veToken?.symbol}
                     </span>
                 </StatInner>
             </StatCard>
             
-            <StatCard className='flex-grow md:basis-[200px] md:flex-grow-0 bg-coolGray-800 p-5 rounded'>
+            <StatCard className='flex-grow md:basis-[200px] md:flex-grow-0 bg-transparent border border-[#595959] p-5 rounded'>
                 <StatInner className='flex flex-col'>
                     <div className='h-7 flex items-center'>
                         {totalSupplyFmt ? (
@@ -82,7 +82,7 @@ export function OverviewHeader() {
                             <div className='flex animate-pulse bg-gray h-4 w-12 rounded' />
                         )}
                     </div>
-                    <span className='text-xs font-semibold text-coolGray-300 tracking-tighter'>
+                    <span className='text-white text-xs font-semibold tracking-tighter'>
                         Total Supply of {govToken?.symbol}
                     </span>
                 </StatInner>

@@ -36,33 +36,33 @@ interface NavLinkProps {
 function NavLink({ href, external, children }: NavLinkProps) {
     const pathname = usePathname()
     const isActive = pathname === href || 
-        (href === '/' && pathname === '/pools')
+        (href === '/' && pathname === '/pools') ||
+        (href === '/gov/sbr' && pathname.startsWith('/gov/'))
 
     if (external) {
         return (
-            <a href={href} target="_blank" rel="noopener noreferrer">
-                <Button 
-                    type="secondary" 
-                    className="w-32 flex items-center justify-center gap-2 h-10"
-                >
-                    {children}
-                </Button>
+            <a 
+                href={href} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200 flex items-center gap-2"
+            >
+                {children}
             </a>
         )
     }
     return (
-        <Link href={href}>
-            <Button 
-                type="secondary" 
-                className={clsx(
-                    'w-32 flex items-center justify-center gap-2 h-10',
-                    isActive 
-                        ? 'bg-white text-[#33425E] border border-[#33425E] cursor-default pointer-events-none shadow-[inset_0_4px_8px_rgba(0,0,0,0.25)]' 
-                        : 'hover:bg-[#33425E]/10'
-                )}
-            >
-                {children}
-            </Button>
+        <Link 
+            href={href}
+            className={`
+                px-4 py-2 text-sm font-medium transition-all duration-200 relative
+                ${isActive 
+            ? 'text-saber border-b-2 border-saber' 
+            : 'text-slate-400 hover:text-white hover:border-b-2 hover:border-saber/50'
+        }
+            `}
+        >
+            {children}
         </Link>
     )
 }
@@ -180,7 +180,7 @@ function Navbar() {
                 </div>
             </UniversalPopover>
 
-            <nav className="w-full flex flex-col lg:flex-row gap-1 mt-5">
+            <nav className="w-full flex flex-col lg:flex-row gap-1">
                 {/* Logo Section - Ancho fijo */}
                 <div className="flex items-center gap-3 font-bold mb-3 lg:mb-0 w-[200px]">
                     <Link href="/" className="flex-grow">

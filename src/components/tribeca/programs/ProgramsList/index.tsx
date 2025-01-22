@@ -64,7 +64,7 @@ export function ProgramsList({ maxCount = 100 }: Props) {
                                     actions={
                                         <Link href={`${path}/proposals/create`}>
                                             <Button
-                                                className='py-2 px-3 hover:dark:text-saber hover:dark:border-primary'
+                                                className='py-2 px-3 hover:dark:text-saber hover:dark:border-saber'
                                                 variant='outline'
                                             >
                                                 Upgrade

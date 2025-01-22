@@ -11,6 +11,7 @@ interface ButtonProps {
     className?: string
     onClick?: () => void
     disabled?: boolean
+    active?: boolean
 }
 
 export function Button({ 
@@ -19,6 +20,7 @@ export function Button({
     size = 'large',
     className,
     disabled,
+    active,
     onClick,
     ...props
 }: ButtonProps) {
@@ -33,15 +35,18 @@ export function Button({
                 'text-slate-200',
                 // Tipos
                 type === 'primary' && 'bg-saber hover:bg-saber/20',
-                type === 'secondary' && 'bg-slate-900 hover:bg-slate-800',
+                type === 'secondary' && !active && 'bg-slate-900 hover:bg-slate-800',
                 type === 'danger' && 'bg-red-800 hover:bg-red-700',
+                // Estado activo
+                active && 'bg-white !text-black border border-white shadow-[inset_0_4px_8px_rgba(0,0,0,0.25)]',
                 // Tamaños
                 size === 'small' && 'py-1 px-3 text-xs',
                 size === 'large' && 'py-2 px-3 text-sm',
                 size === 'full' && 'py-2 px-3 text-sm w-full',
                 // Estados
                 disabled && 'opacity-50 cursor-not-allowed hover:bg-saber',
-                !disabled && 'cursor-pointer',
+                !disabled && !active && 'cursor-pointer',
+                active && 'cursor-default pointer-events-none',
                 className
             )}
             {...props}

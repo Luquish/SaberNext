@@ -136,6 +136,9 @@ module.exports = {
                 'fade-in-down-delayed-2': 'fade-in-down 1.5s 0.4s ease-out forwards',
                 'fade-in-down-delayed-3': 'fade-in-down 1.5s 0.6s ease-out forwards',
             },
+            backgroundImage: {
+                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            },
         },
     },
     plugins: [],
